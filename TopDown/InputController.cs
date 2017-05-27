@@ -14,6 +14,13 @@ namespace TopDown
         private static Boolean IsEscButtonHeld = false;
         private static int framesPassed = 0;
 
+        public static void Clear()
+        {
+            IsLeftMouseButtonHeld = false;
+            IsEscButtonHeld = false;
+            framesPassed = 0;
+        }
+
         public static void ManageInputs(GameTime gameTime)
         {
             var mouse = Mouse.GetState();

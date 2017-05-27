@@ -23,7 +23,25 @@ namespace TopDown.Buttons
 
         private void StartNewGame()
         {
+            ClearActors();
+            ClearData();
+        }
 
+        private void ClearActors()
+        {
+            Actors.Bullets.Clear();
+            Actors.Drawable.Clear();
+            Actors.Enemies.Clear();
+            Actors.Init();
+        }
+
+        private void ClearData()
+        {
+            MonsterSpawner.Clear();
+            //InputController.Clear();
+            ScoreController.score = 0;
+            GameState.IsInProgress = true;
+            GameState.SetGameState(GameState.States.Gameplay);
         }
     }
 }

@@ -46,5 +46,11 @@ namespace TopDown
                 basicMonsterRespawnTime -= 100;
             }
         }
+
+        public static void Clear()
+        {
+            elapsedTime = 0;
+            basicMonsterRespawnTime = 1000;
+        }
     }
 }

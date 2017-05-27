@@ -40,7 +40,7 @@ namespace TopDown
             }
         }
 
-        public void MoveLeft()//TO DO: Repair this shiet
+        public void MoveLeft()
         {
             CorrectSpeed();
             moveTarget.X = position.X - speed;
