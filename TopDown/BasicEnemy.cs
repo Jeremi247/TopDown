@@ -38,9 +38,9 @@ namespace TopDown
 
         private void AdjustColor()
         {
-            int red = (int)(color.R * baseSpeed / defaultSpeed);
-            int green = (int)(color.G * baseSpeed / defaultSpeed);
-            int blue = (int)(color.B * baseSpeed / defaultSpeed);
+            int red = (int)(color.R * Math.Pow(baseSpeed / defaultSpeed, 2));
+            int green = (int)(color.G * Math.Pow(baseSpeed / defaultSpeed, 2));
+            int blue = (int)(color.B * Math.Pow(baseSpeed / defaultSpeed, 2));
 
             Color newColor = new Color(red, green, blue);
             color = newColor;
