@@ -10,8 +10,6 @@ namespace TopDown
 {
     class UpdateController
     {
-        private static float elapsedTime = 0;
-
         public static void Update(GameTime gameTime)
         {
             InputController.ManageInputs(gameTime);
@@ -21,7 +19,7 @@ namespace TopDown
                 DeleteRedundant();
 
                 MoveEntities(gameTime);
-                SpawnMonsters(gameTime);
+                MonsterSpawner.SpawnMonsters(gameTime);
 
                 CheckCollisions();
             }
@@ -47,21 +45,6 @@ namespace TopDown
             {
                 enemy.MoveInDirection(gameTime, Actors.Character.position);
             }
-        }
-
-        private static void SpawnMonsters(GameTime gameTime)
-        {
-            if(elapsedTime > 1)
-            {
-                elapsedTime -= 1;
-                SpawnBasicMonster();
-            }
-            elapsedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-        }
-
-        private static void SpawnBasicMonster()
-        {
-            Actors.Enemies.Add(new BasicEnemy(GameProperties.DefaultTexture, Vector2.Zero, Actors.Character.scale, Color.Green, 200));
         }
 
         private static void CheckCollisions()

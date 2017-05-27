@@ -26,7 +26,14 @@ namespace TopDown
             {
                 spriteBatch.Draw(actor.texture, actor.position, color: actor.color, scale: actor.scale);
             }
+            DrawGUI(spriteBatch);
+
             spriteBatch.End();
+        }
+
+        private static void DrawGUI(SpriteBatch spriteBatch)
+        {
+            spriteBatch.DrawString(GameProperties.DefaultFont, "Score: " + ScoreController.score.ToString(), Vector2.Zero, Color.Aqua);
         }
     }
 }

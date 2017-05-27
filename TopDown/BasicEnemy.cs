@@ -10,25 +10,37 @@ namespace TopDown
 {
     class BasicEnemy : Entity
     {
-        public BasicEnemy(Texture2D texture, Vector2 position, Vector2 scale, Color color, float baseSpeed) : base(texture, position, scale, color) {
-            this.baseSpeed = baseSpeed;
+        private float defaultSpeed = 0;
+        private float value = 0;
 
-            if(position == Vector2.Zero)
+        public BasicEnemy(Texture2D texture, Vector2 position, Vector2 scale, Color color, float baseSpeed, float value) : base(texture, position, scale, color) {
+            this.baseSpeed = baseSpeed;
+            defaultSpeed = baseSpeed;
+
+            this.value = value;
+
+            if (position == Vector2.Zero)
             {
                 SetRandomPosition();
             }
 
             RandomizeVelocity();
+            CalcValue();
             AdjustColor();
 
             updateCollisionSize();
         }
 
+        private void CalcValue()
+        {
+            value = value * baseSpeed / defaultSpeed;
+        }
+
         private void AdjustColor()
         {
-            int red = (int)(color.R - color.R * baseSpeed / 500);
-            int green = (int)(color.G - color.G * baseSpeed / 500);
-            int blue = (int)(color.B - color.B * baseSpeed / 500);
+            int red = (int)(color.R * baseSpeed / defaultSpeed);
+            int green = (int)(color.G * baseSpeed / defaultSpeed);
+            int blue = (int)(color.B * baseSpeed / defaultSpeed);
 
             Color newColor = new Color(red, green, blue);
             color = newColor;
@@ -87,8 +99,9 @@ namespace TopDown
         public new void Remove()
         {
             ShouldBeRemoved = true;
+            MonsterSpawner.LowerRespawnTime(400);
 
-            //TO DO: score event
+            ScoreController.Add((int)value);
         }
     }
 }

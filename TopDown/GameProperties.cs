@@ -12,5 +12,6 @@ namespace TopDown
     {
         public static Rectangle Viewport;
         public static Texture2D DefaultTexture;
+        public static SpriteFont DefaultFont;
     }
 }

@@ -55,9 +55,11 @@
     <Compile Include="Game1.cs" />
     <Compile Include="GameProperties.cs" />
     <Compile Include="InputController.cs" />
+    <Compile Include="MonsterSpawner.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScoreController.cs" />
     <Compile Include="UpdateController.cs" />
   </ItemGroup>
   <ItemGroup>

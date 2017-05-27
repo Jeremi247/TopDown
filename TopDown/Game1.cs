@@ -29,6 +29,7 @@ namespace TopDown
 
             GameProperties.Viewport = GraphicsDevice.Viewport.Bounds;
             GameProperties.DefaultTexture = whitePixel;
+            GameProperties.DefaultFont = Content.Load<SpriteFont>("PixelFont");
 
             Actors.Init();
         }
