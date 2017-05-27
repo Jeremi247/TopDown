@@ -33,3 +33,4 @@ C:\Projects\Visual Studio\TopDown\TopDown\TopDown\obj\Debug\TopDown.csprojResolv
 C:\Projects\Visual Studio\TopDown\TopDown\TopDown\obj\Debug\TopDown.exe
 C:\Projects\Visual Studio\TopDown\TopDown\TopDown\obj\Debug\TopDown.pdb
 C:\Projects\Visual Studio\TopDown\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\Content\PixelFont.xnb
+C:\Projects\Visual Studio\TopDown\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\Content\BigPixelFont.xnb

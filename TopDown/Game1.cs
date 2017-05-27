@@ -30,7 +30,9 @@ namespace TopDown
             GameProperties.Viewport = GraphicsDevice.Viewport.Bounds;
             GameProperties.DefaultTexture = whitePixel;
             GameProperties.DefaultFont = Content.Load<SpriteFont>("PixelFont");
+            GameProperties.BigDefaultFont = Content.Load<SpriteFont>("BigPixelFont");
 
+            MenuController.Init();
             Actors.Init();
         }
         
@@ -46,14 +48,11 @@ namespace TopDown
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
             UpdateController.Update(gameTime);
 
             base.Update(gameTime);
         }
-        
+
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
@@ -61,7 +60,7 @@ namespace TopDown
             Window.Title = (1 / gameTime.ElapsedGameTime.TotalSeconds).ToString();
 
             DrawController.Draw(spriteBatch);
-            
+
             base.Draw(gameTime);
         }
     }

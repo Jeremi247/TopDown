@@ -8,6 +8,7 @@ namespace TopDown
 {
     class GameState
     {
+        public static Boolean IsInProgress = false;
         public enum States { GameOver, Menu, Gameplay };
         private static States gameState = States.Gameplay;
 

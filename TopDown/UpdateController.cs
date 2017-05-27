@@ -12,16 +12,26 @@ namespace TopDown
     {
         public static void Update(GameTime gameTime)
         {
+            if (!Program.game.IsActive)
+            {
+                GameState.SetGameState(GameState.States.Menu);
+            }
+
             InputController.ManageInputs(gameTime);
 
             if (GameState.GetGameState() == GameState.States.Gameplay)
             {
+                GameState.IsInProgress = true;
                 DeleteRedundant();
 
                 MoveEntities(gameTime);
                 MonsterSpawner.SpawnMonsters(gameTime);
 
                 CheckCollisions();
+            }
+            else if(GameState.GetGameState() == GameState.States.Menu)
+            {
+                MenuController.CheckStates();
             }
         }
 
@@ -66,7 +76,8 @@ namespace TopDown
                 }
                 if (enemy.collisionBox.Intersects(Actors.Character.collisionBox))
                 {
-                    GameState.SetGameState(GameState.States.GameOver);
+                    GameState.SetGameState(GameState.States.Menu);
+                    GameState.IsInProgress = false;
                 }
             }
         }

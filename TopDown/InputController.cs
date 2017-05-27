@@ -11,6 +11,7 @@ namespace TopDown
     class InputController
     {
         public static Boolean IsLeftMouseButtonHeld = false;
+        private static Boolean IsEscButtonHeld = false;
         private static int framesPassed = 0;
 
         public static void ManageInputs(GameTime gameTime)
@@ -52,6 +53,24 @@ namespace TopDown
             if (keyboard.IsKeyUp(Keys.LeftShift))
             {
                 Actors.Character.speedMultiplayer = 1f;
+            }
+
+            if (keyboard.IsKeyDown(Keys.Escape) && !IsEscButtonHeld)
+            {
+                IsEscButtonHeld = true;
+                if(GameState.IsInProgress && GameState.GetGameState() == GameState.States.Menu)
+                {
+                    GameState.SetGameState(GameState.States.Gameplay);
+                }
+                else if(GameState.GetGameState() == GameState.States.Gameplay)
+                {
+                    GameState.SetGameState(GameState.States.Menu);
+                }
+            }
+
+            if (keyboard.IsKeyUp(Keys.Escape))
+            {
+                IsEscButtonHeld = false;
             }
         }
 

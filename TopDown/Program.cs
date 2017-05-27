@@ -2,18 +2,14 @@
 
 namespace TopDown
 {
-    /// <summary>
-    /// The main class.
-    /// </summary>
     public static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
+        public static Game1 game = new Game1();
+
         [STAThread]
         static void Main()
         {
-            using (var game = new Game1())
+            using (game)
                 game.Run();
         }
     }

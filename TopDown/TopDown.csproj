@@ -50,12 +50,17 @@
     <Compile Include="Actors.cs" />
     <Compile Include="BasicEnemy.cs" />
     <Compile Include="Bullet.cs" />
+    <Compile Include="Button.cs" />
+    <Compile Include="Buttons\Exit.cs" />
+    <Compile Include="Buttons\NewGame.cs" />
+    <Compile Include="Buttons\Resume.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="DrawController.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameProperties.cs" />
     <Compile Include="InputController.cs" />
+    <Compile Include="MenuController.cs" />
     <Compile Include="MonsterSpawner.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />

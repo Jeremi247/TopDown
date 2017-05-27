@@ -28,12 +28,17 @@ namespace TopDown
             }
             DrawGUI(spriteBatch);
 
+            if (GameState.GetGameState() == GameState.States.Menu)
+            {
+                MenuController.DrawMenu(spriteBatch);
+            }
+
             spriteBatch.End();
         }
 
         private static void DrawGUI(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(GameProperties.DefaultFont, "Score: " + ScoreController.score.ToString(), Vector2.Zero, Color.Aqua);
+            spriteBatch.DrawString(GameProperties.DefaultFont, "Score: " + ScoreController.score.ToString(), new Vector2(10,5), Color.Teal);
         }
     }
 }
