@@ -14,22 +14,10 @@ namespace TopDown
         {
             spriteBatch.Begin();
 
-            foreach (Actor actor in Actors.BloodParticles)
-            {
-                spriteBatch.Draw(actor.texture, actor.position, color: actor.color, scale: actor.scale);
-            }
-            foreach (Actor actor in Actors.Drawable)
-            {
-                spriteBatch.Draw(actor.texture, actor.position, color: actor.color, scale: actor.scale);
-            }
-            foreach (Actor actor in Actors.Bullets)
-            {
-                spriteBatch.Draw(actor.texture, actor.position, color: actor.color, scale: actor.scale);
-            }
-            foreach (Actor actor in Actors.Enemies)
-            {
-                spriteBatch.Draw(actor.texture, actor.position, color: actor.color, scale: actor.scale);
-            }
+            DrawActors(Actors.BloodParticles.ToList<Actor>(), spriteBatch);
+            DrawActors(Actors.Drawable.ToList<Actor>(), spriteBatch);
+            DrawActors(Actors.Bullets.ToList<Actor>(), spriteBatch);
+            DrawActors(Actors.Enemies.ToList<Actor>(), spriteBatch);
 
             if (GameState.GetGameState() == GameState.States.Menu)
             {
@@ -39,6 +27,14 @@ namespace TopDown
             DrawGUI(spriteBatch);
 
             spriteBatch.End();
+        }
+
+        private static void DrawActors(List<Actor> list, SpriteBatch spriteBatch)
+        {
+            foreach (Actor actor in list)
+            {
+                spriteBatch.Draw(actor.texture, actor.position, color: actor.color, scale: actor.scale);
+            }
         }
 
         private static void DrawGUI(SpriteBatch spriteBatch)
