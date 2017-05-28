@@ -51,6 +51,10 @@ namespace TopDown
 
         public static void DrawMenu(SpriteBatch spriteBatch)
         {
+            Color background = Color.Black;
+            background.A = 180;
+            spriteBatch.Draw(GameProperties.DefaultTexture, GameProperties.Viewport, background);
+
             foreach (Button button in Buttons)
             {
                 button.Draw(spriteBatch);
@@ -58,11 +62,6 @@ namespace TopDown
 
             Vector2 textPos = new Vector2(GameProperties.Viewport.Width / 2 - GameProperties.BigDefaultFont.MeasureString(menuText).X / 2, 40);
             spriteBatch.DrawString(GameProperties.BigDefaultFont, menuText, textPos, Color.White);
-        }
-
-        public static void CheckInteractions()
-        {
-
         }
     }
 }

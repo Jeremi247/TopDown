@@ -19,6 +19,7 @@ namespace TopDown
 
         public Button(Vector2 position, String text)
         {
+            size.X = GameProperties.Viewport.Width - position.X;
             boundary = new Rectangle(position.ToPoint(), size.ToPoint());
             this.text = text;
 

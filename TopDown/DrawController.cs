@@ -26,12 +26,13 @@ namespace TopDown
             {
                 spriteBatch.Draw(actor.texture, actor.position, color: actor.color, scale: actor.scale);
             }
-            DrawGUI(spriteBatch);
 
             if (GameState.GetGameState() == GameState.States.Menu)
             {
                 MenuController.DrawMenu(spriteBatch);
             }
+
+            DrawGUI(spriteBatch);
 
             spriteBatch.End();
         }

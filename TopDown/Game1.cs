@@ -20,7 +20,6 @@ namespace TopDown
         protected override void Initialize()
         {
             base.Initialize();
-
             this.IsMouseVisible = true;
 
             whitePixel = new Texture2D(GraphicsDevice, 1, 1);
@@ -57,7 +56,7 @@ namespace TopDown
         {
             GraphicsDevice.Clear(Color.Black);
 
-            Window.Title = (1 / gameTime.ElapsedGameTime.TotalSeconds).ToString();
+            Window.Title = "v0.1";
 
             DrawController.Draw(spriteBatch);
 
