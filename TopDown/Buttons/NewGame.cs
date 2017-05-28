@@ -32,6 +32,7 @@ namespace TopDown.Buttons
             Actors.Bullets.Clear();
             Actors.Drawable.Clear();
             Actors.Enemies.Clear();
+            Actors.BloodParticles.Clear();
             Actors.Init();
         }
 

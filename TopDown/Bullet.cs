@@ -28,6 +28,16 @@ namespace TopDown
             updateCollisionSize();
         }
 
+        public Vector2 GetSpeed()
+        {
+            return velocity;
+        }
+
+        public Vector2 GetTargetPosition()
+        {
+            return targetPosition;
+        }
+
         public void Move(GameTime gameTime)
         {
             position.X += velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -36,7 +46,7 @@ namespace TopDown
             updateCollisionPosition();
         }
 
-        public Vector2 GetVelocity(Vector2 targetLocation)
+        private Vector2 GetVelocity(Vector2 targetLocation)
         {
             Vector2 velocity = Vector2.Zero;
             Vector2 deltaLocation = GetPositionDelta(targetLocation);

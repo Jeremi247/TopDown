@@ -14,7 +14,11 @@ namespace TopDown
         {
             spriteBatch.Begin();
 
-            foreach(Actor actor in Actors.Drawable)
+            foreach (Actor actor in Actors.BloodParticles)
+            {
+                spriteBatch.Draw(actor.texture, actor.position, color: actor.color, scale: actor.scale);
+            }
+            foreach (Actor actor in Actors.Drawable)
             {
                 spriteBatch.Draw(actor.texture, actor.position, color: actor.color, scale: actor.scale);
             }

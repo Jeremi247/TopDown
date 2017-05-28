@@ -10,6 +10,7 @@ namespace TopDown
 {
     class GameProperties
     {
+        public static Random random = new Random();
         public static Rectangle Viewport;
         public static Texture2D DefaultTexture;
         public static SpriteFont DefaultFont;

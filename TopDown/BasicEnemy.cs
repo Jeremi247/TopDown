@@ -96,8 +96,17 @@ namespace TopDown
             position.Y = viewport.Height;
         }
 
+        public void SpawnBlood(Bullet bullet)
+        {
+            for (int i = 0; i < new Random().Next(5, 10); i++)
+            {
+                Actors.BloodParticles.Add(new BloodParticle(GameProperties.DefaultTexture, new Vector2(5, 5), Color.DarkRed, bullet));
+            }
+        }
+
         public new void Remove()
         {
+
             ShouldBeRemoved = true;
             MonsterSpawner.LowerRespawnTime(400);
 

@@ -55,6 +55,11 @@ namespace TopDown
             {
                 enemy.MoveInDirection(gameTime, Actors.Character.position);
             }
+
+            foreach (var particle in Actors.BloodParticles)
+            {
+                particle.Move(gameTime);
+            }
         }
 
         private static void CheckCollisions()
@@ -70,6 +75,7 @@ namespace TopDown
                 {
                     if(bullet.collisionBox.Intersects(enemy.collisionBox))
                     {
+                        enemy.SpawnBlood(bullet);
                         bullet.Remove();
                         enemy.Remove();
                     }

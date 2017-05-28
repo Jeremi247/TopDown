@@ -7,7 +7,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{607B2C25-E283-4E81-8421-BFAED3DF60B2}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TopDown</RootNamespace>
     <AssemblyName>TopDown</AssemblyName>
@@ -49,6 +49,7 @@
     <Compile Include="Actor.cs" />
     <Compile Include="Actors.cs" />
     <Compile Include="BasicEnemy.cs" />
+    <Compile Include="BloodParticle.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="Buttons\Exit.cs" />
