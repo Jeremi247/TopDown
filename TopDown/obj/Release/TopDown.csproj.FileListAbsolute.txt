@@ -16,3 +16,4 @@ C:\Projects\Visual Studio\TopDown\TopDown\TopDown\bin\DesktopGL\AnyCPU\Release\T
 C:\Projects\Visual Studio\TopDown\TopDown\TopDown\bin\DesktopGL\AnyCPU\Release\MonoGame.Framework.dll
 C:\Projects\Visual Studio\TopDown\TopDown\TopDown\obj\Release\TopDown.exe
 C:\Projects\Visual Studio\TopDown\TopDown\TopDown\obj\Release\TopDown.pdb
+C:\Projects\Visual Studio\TopDown\TopDown\TopDown\obj\Release\TopDown.csprojResolveAssemblyReference.cache

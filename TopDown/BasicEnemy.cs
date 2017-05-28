@@ -97,7 +97,7 @@ namespace TopDown
         {
             for (int i = 0; i < rnd.Next(5, 10); i++)
             {
-                Actors.BloodParticles.Add(new BloodParticle(GameProperties.DefaultTexture, new Vector2(5, 5), Color.DarkGreen, bullet));
+                Actors.BloodParticles.Add(new BloodParticle(GameProperties.DefaultTexture, new Vector2(5, 5), Color.IndianRed, bullet));
             }
         }
 

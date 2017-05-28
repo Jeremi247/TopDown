@@ -10,6 +10,8 @@ namespace TopDown
 {
     class BloodParticle : Entity
     {
+        double fadingSpeed = 20;
+        Vector3 colorFade;
         Vector2 velocity = Vector2.Zero;
         Vector2 conVelocity = Vector2.Zero;
         Vector2 targetPosition;
@@ -24,6 +26,34 @@ namespace TopDown
 
             AdjustColor();
             AdjustTarget();
+        }
+
+        public void Fade(GameTime gameTime)
+        {
+            var amount = (255/30)*gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (color.R <= amount && color.G <= amount && color.B <= amount)
+            {
+                ShouldBeRemoved = true;
+            }
+
+            if (color.R > amount)
+            {
+                colorFade.X -= (float)amount;
+                color.R = (byte)colorFade.X;
+            }
+
+            if (color.G > amount)
+            {
+                colorFade.Y -= (float)amount;
+                color.G = (byte)colorFade.Y;
+            }
+
+            if (color.B > amount)
+            {
+                colorFade.Z -= (float)amount;
+                color.B = (byte)colorFade.Z;
+            }
         }
 
         public void Move(GameTime gameTime)
@@ -64,6 +94,7 @@ namespace TopDown
 
             Color newColor = new Color(red, green, blue);
             color = newColor;
+            colorFade = color.ToVector3()*255;
         }
     }
 }

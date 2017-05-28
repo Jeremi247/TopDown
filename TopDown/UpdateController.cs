@@ -40,6 +40,8 @@ namespace TopDown
         {
             Actors.Bullets.RemoveAll(bullet => bullet.CanBeRemoved());
             Actors.Enemies.RemoveAll(enemy => enemy.CanBeRemoved());
+            Actors.BloodParticles.RemoveAll(particle => particle.CanBeRemoved());
+            Actors.DeadBodies.RemoveAll(body => body.CanBeRemoved());
             Actors.Abilities.RemoveAll(ability => ability.CanBeRemoved());
         }
 
@@ -61,6 +63,12 @@ namespace TopDown
             foreach (var particle in Actors.BloodParticles)
             {
                 particle.Move(gameTime);
+                particle.Fade(gameTime);
+            }
+
+            foreach (var body in Actors.DeadBodies)
+            {
+                body.Fade(gameTime);
             }
 
             foreach (var ability in Actors.Abilities)

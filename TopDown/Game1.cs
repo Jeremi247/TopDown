@@ -22,6 +22,12 @@ namespace TopDown
             base.Initialize();
             this.IsMouseVisible = true;
 
+            graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
+            graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
+            graphics.ToggleFullScreen();
+
+            graphics.ApplyChanges();
+
             whitePixel = new Texture2D(GraphicsDevice, 1, 1);
             Color[] colorData = { Color.White };
             whitePixel.SetData<Color>(colorData);

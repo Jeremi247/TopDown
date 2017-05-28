@@ -11,7 +11,7 @@ namespace TopDown
     class Player : Entity
     {
         private Vector2 moveTarget;
-        public float timeToNextShot = 0;
+        public float timeToNextShot = 100;
         
         public Player(Texture2D texture, Vector2 position, Vector2 scale, Color color, float baseSpeed) : base (texture, position, scale, color)
         {
@@ -43,10 +43,10 @@ namespace TopDown
             else if (AbilitiesController.CurrentWeapon == AbilitiesController.WeaponTypes.minigun && timeToNextShot <= 0)
             {
                 var minigunBulletSize = bulletSize * new Vector2(0.8f, 0.8f);
-                Bullet bullet = new Bullet(bulletTexture, spawnPosition, minigunBulletSize, Color.LightYellow, bulletTarget, 1000);
+                Bullet bullet = new Bullet(bulletTexture, spawnPosition, minigunBulletSize, Color.PaleGoldenrod, bulletTarget, 1000);
 
                 Actors.Bullets.Add(bullet);
-                timeToNextShot = 70;
+                timeToNextShot = 30;
             }
         }
 
