@@ -46,6 +46,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AbilitiesController.cs" />
+    <Compile Include="Abilities\Minigun.cs" />
+    <Compile Include="Ability.cs" />
     <Compile Include="Actor.cs" />
     <Compile Include="Actors.cs" />
     <Compile Include="BasicEnemy.cs" />
@@ -55,6 +58,7 @@
     <Compile Include="Buttons\Exit.cs" />
     <Compile Include="Buttons\NewGame.cs" />
     <Compile Include="Buttons\Resume.cs" />
+    <Compile Include="DeadBody.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="DrawController.cs" />
     <Compile Include="Entity.cs" />

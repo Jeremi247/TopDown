@@ -29,17 +29,19 @@ namespace TopDown.Buttons
 
         private void ClearActors()
         {
+            Actors.Abilities.Clear();
             Actors.Bullets.Clear();
             Actors.Drawable.Clear();
             Actors.Enemies.Clear();
             Actors.BloodParticles.Clear();
+            Actors.DeadBodies.Clear();
             Actors.Init();
         }
 
         private void ClearData()
         {
             MonsterSpawner.Clear();
-            //InputController.Clear();
+            AbilitiesController.Clear();
             ScoreController.score = 0;
             GameState.IsInProgress = true;
             GameState.SetGameState(GameState.States.Gameplay);

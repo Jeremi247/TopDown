@@ -10,7 +10,6 @@ namespace TopDown
 {
     class BloodParticle : Entity
     {
-        Random rnd = GameProperties.random;
         Vector2 velocity = Vector2.Zero;
         Vector2 conVelocity = Vector2.Zero;
         Vector2 targetPosition;

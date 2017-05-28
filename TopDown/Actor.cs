@@ -10,6 +10,7 @@ namespace TopDown
 {
     class Actor
     {
+        protected Random rnd = GameProperties.random;
         public Vector2 position;
         public Vector2 scale;
         public Vector2 size;

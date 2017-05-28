@@ -14,8 +14,10 @@ namespace TopDown
         {
             spriteBatch.Begin();
 
+            DrawActors(Actors.DeadBodies.ToList<Actor>(), spriteBatch);
             DrawActors(Actors.BloodParticles.ToList<Actor>(), spriteBatch);
             DrawActors(Actors.Drawable.ToList<Actor>(), spriteBatch);
+            DrawActors(Actors.Abilities.ToList<Actor>(), spriteBatch);
             DrawActors(Actors.Bullets.ToList<Actor>(), spriteBatch);
             DrawActors(Actors.Enemies.ToList<Actor>(), spriteBatch);
 

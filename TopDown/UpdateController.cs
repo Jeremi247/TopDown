@@ -27,6 +27,7 @@ namespace TopDown
                 MoveEntities(gameTime);
                 MonsterSpawner.SpawnMonsters(gameTime);
 
+                AbilitiesController.Run(gameTime);
                 CheckCollisions();
             }
             else if(GameState.GetGameState() == GameState.States.Menu)
@@ -39,6 +40,7 @@ namespace TopDown
         {
             Actors.Bullets.RemoveAll(bullet => bullet.CanBeRemoved());
             Actors.Enemies.RemoveAll(enemy => enemy.CanBeRemoved());
+            Actors.Abilities.RemoveAll(ability => ability.CanBeRemoved());
         }
 
         private static void MoveEntities(GameTime gameTime)
@@ -60,11 +62,29 @@ namespace TopDown
             {
                 particle.Move(gameTime);
             }
+
+            foreach (var ability in Actors.Abilities)
+            {
+                ability.Pulse(gameTime);
+            }
         }
 
         private static void CheckCollisions()
         {
             CheckEnemiesCollisions();
+            CheckAbilities();
+        }
+
+        private static void CheckAbilities()
+        {
+            foreach(var ability in Actors.Abilities)
+            {
+                if (Actors.Character.collisionBox.Intersects(ability.collisionBox))
+                {
+                    ability.ApplyAbility();
+                    ability.Remove();
+                }
+            }
         }
 
         private static void CheckEnemiesCollisions()

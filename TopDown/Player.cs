@@ -11,6 +11,7 @@ namespace TopDown
     class Player : Entity
     {
         private Vector2 moveTarget;
+        public float timeToNextShot = 0;
         
         public Player(Texture2D texture, Vector2 position, Vector2 scale, Color color, float baseSpeed) : base (texture, position, scale, color)
         {
@@ -32,11 +33,35 @@ namespace TopDown
             spawnPosition.X = position.X + (texture.Width * scale.X) / 2 - (bulletTexture.Width * bulletSize.X) / 2;
             spawnPosition.Y = position.Y + (texture.Height * scale.Y) / 2 - (bulletTexture.Height * bulletSize.Y) / 2;
 
-            if (!InputController.IsLeftMouseButtonHeld)
+            if (CanPistolShoot())
             {
                 Bullet bullet = new Bullet(bulletTexture, spawnPosition, bulletSize, Color.Yellow, bulletTarget, 700);
 
                 Actors.Bullets.Add(bullet);
+                timeToNextShot = 200;
+            }
+            else if (AbilitiesController.CurrentWeapon == AbilitiesController.WeaponTypes.minigun && timeToNextShot <= 0)
+            {
+                var minigunBulletSize = bulletSize * new Vector2(0.8f, 0.8f);
+                Bullet bullet = new Bullet(bulletTexture, spawnPosition, minigunBulletSize, Color.LightYellow, bulletTarget, 1000);
+
+                Actors.Bullets.Add(bullet);
+                timeToNextShot = 70;
+            }
+        }
+
+        private Boolean CanPistolShoot()
+        {
+            return AbilitiesController.CurrentWeapon == AbilitiesController.WeaponTypes.pistol &&
+                   (!InputController.IsLeftMouseButtonHeld ||
+                   (InputController.IsLeftMouseButtonHeld && timeToNextShot <= 0));
+        }
+
+        public void UpdateWeaponTimer(GameTime gameTime)
+        {
+            if (timeToNextShot > 0)
+            {
+                timeToNextShot -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             }
         }
 
