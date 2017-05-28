@@ -56,7 +56,7 @@ namespace TopDown
 
         private void AdjustColor()
         {
-            var divider = 1;
+            var divider = 0.5;
             var variety = (1 - (1/ divider) / 2) + (rnd.NextDouble() / divider);
 
             int red = (int)(color.R * variety);

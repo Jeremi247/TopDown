@@ -106,7 +106,6 @@ namespace TopDown
 
         public new void Remove()
         {
-
             ShouldBeRemoved = true;
             MonsterSpawner.LowerRespawnTime(400);
 

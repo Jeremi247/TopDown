@@ -39,7 +39,7 @@ namespace TopDown
 
         private static void DrawGUI(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(GameProperties.DefaultFont, "Score: " + ScoreController.score.ToString(), new Vector2(10,5), Color.Teal);
+            spriteBatch.DrawString(ScoreController.font, ScoreController.GetText(), ScoreController.position, ScoreController.color);
         }
     }
 }
