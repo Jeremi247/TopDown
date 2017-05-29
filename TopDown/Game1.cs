@@ -22,9 +22,10 @@ namespace TopDown
             base.Initialize();
             this.IsMouseVisible = true;
 
-            graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
-            graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
-            graphics.ToggleFullScreen();
+            graphics.PreferredBackBufferWidth = 1280;
+            graphics.PreferredBackBufferHeight = 720;
+
+            IntPtr ptr = this.Window.Handle;
 
             graphics.ApplyChanges();
 
@@ -37,6 +38,7 @@ namespace TopDown
             GameProperties.DefaultFont = Content.Load<SpriteFont>("PixelFont");
             GameProperties.BigDefaultFont = Content.Load<SpriteFont>("BigPixelFont");
 
+            AbilitiesController.Init();
             MenuController.Init();
             Actors.Init();
         }
