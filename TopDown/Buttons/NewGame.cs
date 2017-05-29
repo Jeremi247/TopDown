@@ -42,7 +42,7 @@ namespace TopDown.Buttons
         {
             MonsterSpawner.Clear();
             AbilitiesController.Clear();
-            ScoreController.score = 0;
+            ScoreController.Clear();
             GameState.IsInProgress = true;
             GameState.SetGameState(GameState.States.Gameplay);
         }

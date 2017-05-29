@@ -17,6 +17,12 @@ namespace TopDown
         public static float scoreMultiplayer = 1;
         public static ulong score = 0;
 
+        public static void Clear()
+        {
+            score = 0;
+            scoreMultiplayer = 1;
+        }
+
         public static void Add(int points)
         {
             score += (ulong)(points * scoreMultiplayer);
