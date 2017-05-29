@@ -59,7 +59,7 @@ namespace TopDown
         {
             var viewport = GameProperties.Viewport;
             
-            int spawnSide = rnd.Next(0, 3);
+            int spawnSide = rnd.Next(0, 4);
 
             switch (spawnSide)
             {
