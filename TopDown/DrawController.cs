@@ -41,7 +41,7 @@ namespace TopDown
 
         private static void DrawGUI(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(ScoreController.font, ScoreController.GetText(), ScoreController.position, ScoreController.color);
+            ScoreController.DrawScore(spriteBatch);
             AbilitiesController.DrawTimer(spriteBatch);
         }
     }

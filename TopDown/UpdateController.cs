@@ -79,7 +79,7 @@ namespace TopDown
 
         private static void CheckCollisions()
         {
-            CheckEnemiesCollisions();
+            //CheckEnemiesCollisions();
             CheckAbilities();
         }
 

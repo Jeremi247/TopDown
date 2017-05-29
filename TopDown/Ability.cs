@@ -67,8 +67,8 @@ namespace TopDown
                 shouldGrow = true;
             }
 
-            updateCollisionSize();
-            updateCollisionPosition();
+            UpdateCollisionSize();
+            UpdateCollisionPosition();
         }
     }
 }

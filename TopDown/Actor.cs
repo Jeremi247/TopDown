@@ -29,7 +29,7 @@ namespace TopDown
             this.size.X = texture.Width * scale.X;
             this.size.Y = texture.Height * scale.Y;
 
-            setCollisionBox();
+            SetCollisionBox();
         }
 
         public void Remove()
@@ -42,18 +42,18 @@ namespace TopDown
             return ShouldBeRemoved;
         }
 
-        protected void setCollisionBox()
+        protected void SetCollisionBox()
         {
-            updateCollisionPosition();
-            updateCollisionSize();
+            UpdateCollisionPosition();
+            UpdateCollisionSize();
         }
 
-        protected void updateCollisionPosition()
+        protected void UpdateCollisionPosition()
         {
             collisionBox.Location = position.ToPoint();
         }
 
-        protected void updateCollisionSize()
+        protected void UpdateCollisionSize()
         {
             collisionBox.Width = (int)(texture.Width * scale.X);
             collisionBox.Height = (int)(texture.Height * scale.Y);

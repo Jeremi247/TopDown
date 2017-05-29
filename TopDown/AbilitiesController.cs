@@ -35,9 +35,9 @@ namespace TopDown
         {
             weaponNamePosition.X = GameProperties.Viewport.Width -
                                    font.MeasureString(CurrentWeapon.ToString()).X - 
-                                   ScoreController.position.X;
+                                   ScoreController.scorePosition.X;
 
-            weaponNamePosition.Y = ScoreController.position.Y;
+            weaponNamePosition.Y = ScoreController.scorePosition.Y;
         }
 
         public static void DrawTimer(SpriteBatch spriteBatch)

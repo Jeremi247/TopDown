@@ -28,7 +28,8 @@ namespace TopDown
             CalcValue();
             AdjustColor();
 
-            updateCollisionSize();
+            UpdateCollisionSize();
+            Console.WriteLine(Actors.Character.scale + " " + scale);
         }
 
         private void CalcValue()

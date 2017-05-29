@@ -25,7 +25,7 @@ namespace TopDown
             this.targetPosition = targetPosition;
             this.velocity = GetVelocity(targetPosition);
 
-            updateCollisionSize();
+            UpdateCollisionSize();
         }
 
         public Vector2 GetSpeed()
@@ -43,7 +43,7 @@ namespace TopDown
             position.X += velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds;
             position.Y += velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            updateCollisionPosition();
+            UpdateCollisionPosition();
         }
 
         private Vector2 GetVelocity(Vector2 targetLocation)
