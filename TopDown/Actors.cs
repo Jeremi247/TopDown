@@ -14,7 +14,7 @@ namespace TopDown
         public static List<Actor> Drawable = new List<Actor>();
         public static List<Bullet> Bullets = new List<Bullet>();
         public static List<BasicEnemy> Enemies = new List<BasicEnemy>();
-        public static List<BloodParticle> BloodParticles = new List<BloodParticle>();
+        public static List<Particle> BloodParticles = new List<Particle>();
         public static List<DeadBody> DeadBodies = new List<DeadBody>();
         public static List<Ability> Abilities = new List<Ability>();
 

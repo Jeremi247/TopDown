@@ -8,17 +8,18 @@ using System.Threading.Tasks;
 
 namespace TopDown
 {
-    class BloodParticle : Entity
+    class Particle : Entity
     {
-        double fadingSpeed = 20;
+        double fadingTime = 30;
         Vector3 colorFade;
         Vector2 velocity = Vector2.Zero;
         Vector2 conVelocity = Vector2.Zero;
         Vector2 targetPosition;
         static Vector2 defaultPosition = Vector2.Zero;
 
-        public BloodParticle(Texture2D texture, Vector2 scale, Color color, Bullet bullet) : base(texture, defaultPosition, scale, color)
+        public Particle(Texture2D texture, Vector2 scale, Color color, Bullet bullet, double fadingTime) : base(texture, defaultPosition, scale, color)
         {
+            this.fadingTime = fadingTime;
             position = bullet.position;
             velocity = bullet.GetSpeed();
             targetPosition = bullet.GetTargetPosition();
@@ -30,7 +31,7 @@ namespace TopDown
 
         public void Fade(GameTime gameTime)
         {
-            var amount = (255/30)*gameTime.ElapsedGameTime.TotalSeconds;
+            var amount = (255/ fadingTime) *gameTime.ElapsedGameTime.TotalSeconds;
 
             if (color.R <= amount && color.G <= amount && color.B <= amount)
             {
@@ -69,11 +70,11 @@ namespace TopDown
             var maxSpeed = Math.Sqrt(Math.Pow(velocity.X, 2) + Math.Pow(velocity.Y, 2));
 
             var variety = rnd.Next((int)maxSpeed / 2, (int)maxSpeed);
-            variety -= (int)maxSpeed/2;
+            variety -= (int)(maxSpeed*0.75);
             velocity.X += (float)variety;
 
             variety = rnd.Next((int)maxSpeed / 2, (int)maxSpeed);
-            variety -= (int)maxSpeed / 2;
+            variety -= (int)(maxSpeed * 0.75);
             velocity.Y += (float)variety;
         }
 

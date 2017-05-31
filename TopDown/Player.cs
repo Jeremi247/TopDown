@@ -37,6 +37,8 @@ namespace TopDown
             {
                 Bullet bullet = new Bullet(bulletTexture, spawnPosition, bulletSize, Color.Yellow, bulletTarget, 700);
 
+                SpawnSmoke(bullet, Color.DimGray, 0.3, 7);
+                SpawnSmoke(bullet, Color.Orange, 0.01, 7);
                 Actors.Bullets.Add(bullet);
                 timeToNextShot = 200;
             }
@@ -45,8 +47,18 @@ namespace TopDown
                 var minigunBulletSize = bulletSize * new Vector2(0.8f, 0.8f);
                 Bullet bullet = new Bullet(bulletTexture, spawnPosition, minigunBulletSize, Color.PaleGoldenrod, bulletTarget, 1000);
 
+                SpawnSmoke(bullet, Color.Gray, 0.1, 10);
+                SpawnSmoke(bullet, Color.Orange, 0.01, 7);
                 Actors.Bullets.Add(bullet);
                 timeToNextShot = 30;
+            }
+        }
+
+        private void SpawnSmoke(Bullet bullet, Color color, double time, int amount)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                Actors.BloodParticles.Add(new Particle(GameProperties.DefaultTexture, new Vector2(5, 5), color, bullet, time));
             }
         }
 
