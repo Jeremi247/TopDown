@@ -63,5 +63,11 @@ namespace TopDown
             Vector2 textPos = new Vector2(GameProperties.Viewport.Width / 2 - GameProperties.BigDefaultFont.MeasureString(menuText).X / 2, 40);
             spriteBatch.DrawString(GameProperties.BigDefaultFont, menuText, textPos, Color.White);
         }
+
+        public static void DrawPause(SpriteBatch spriteBatch)
+        {
+            Vector2 textPos = new Vector2(GameProperties.Viewport.Width / 2 - GameProperties.BigDefaultFont.MeasureString("PAUSE").X / 2, 40);
+            spriteBatch.DrawString(GameProperties.BigDefaultFont, "PAUSE", textPos, Color.White);
+        }
     }
 }

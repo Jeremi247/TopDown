@@ -59,7 +59,7 @@
     <Compile Include="Buttons\NewGame.cs" />
     <Compile Include="Buttons\Resume.cs" />
     <Compile Include="DeadBody.cs" />
-    <Compile Include="GameState.cs" />
+    <Compile Include="GameStateController.cs" />
     <Compile Include="DrawController.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Game1.cs" />

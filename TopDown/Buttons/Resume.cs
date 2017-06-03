@@ -17,7 +17,7 @@ namespace TopDown.Buttons
 
         public override void CheckState()
         {
-            if (!GameState.IsInProgress)
+            if (!GameStateController.IsInProgress)
             {
                 isActive = false;
             }
@@ -37,7 +37,7 @@ namespace TopDown.Buttons
 
         private void ResumeGame()
         {
-            GameState.SetGameState(GameState.States.Gameplay);
+            GameStateController.SetGameState(GameStateController.States.Gameplay);
         }
     }
 }

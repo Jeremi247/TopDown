@@ -12,6 +12,7 @@ namespace TopDown
     {
         public static Boolean IsLeftMouseButtonHeld = false;
         private static Boolean IsEscButtonHeld = false;
+        private static Boolean IsSpaceButtonHeld = false;
         private static int framesPassed = 0;
 
         public static void Clear()
@@ -28,6 +29,32 @@ namespace TopDown
 
             MouseController(mouse);
             CharacterController(keyboard);
+            OtherFunctions(keyboard);
+        }
+
+        private static void OtherFunctions(KeyboardState keyboard)
+        {
+            if(GameStateController.GetGameState() == GameStateController.States.Gameplay)
+            {
+                if (keyboard.IsKeyDown(Keys.Space) && !IsSpaceButtonHeld)
+                {
+                    GameStateController.SetGameState(GameStateController.States.Pause);
+                    IsSpaceButtonHeld = true;
+                }
+            }
+            else if(GameStateController.GetGameState() == GameStateController.States.Pause)
+            {
+                if (keyboard.IsKeyDown(Keys.Space) && !IsSpaceButtonHeld)
+                {
+                    GameStateController.SetGameState(GameStateController.States.Gameplay);
+                    IsSpaceButtonHeld = true;
+                }
+            }
+
+            if (keyboard.IsKeyUp(Keys.Space))
+            {
+                IsSpaceButtonHeld = false;
+            }
         }
 
         private static void CharacterController(KeyboardState keyboard)
@@ -65,13 +92,13 @@ namespace TopDown
             if (keyboard.IsKeyDown(Keys.Escape) && !IsEscButtonHeld)
             {
                 IsEscButtonHeld = true;
-                if(GameState.IsInProgress && GameState.GetGameState() == GameState.States.Menu)
+                if(GameStateController.IsInProgress && GameStateController.GetGameState() == GameStateController.States.Menu)
                 {
-                    GameState.SetGameState(GameState.States.Gameplay);
+                    GameStateController.SetGameState(GameStateController.States.Gameplay);
                 }
-                else if(GameState.GetGameState() == GameState.States.Gameplay)
+                else if(GameStateController.GetGameState() != GameStateController.States.Menu)
                 {
-                    GameState.SetGameState(GameState.States.Menu);
+                    GameStateController.SetGameState(GameStateController.States.Menu);
                 }
             }
 
@@ -94,7 +121,7 @@ namespace TopDown
                     framesPassed += 1;
                 }
 
-                if (GameState.GetGameState() == GameState.States.Gameplay)
+                if (GameStateController.GetGameState() == GameStateController.States.Gameplay)
                 {
                     Actors.Character.Shoot();
                 }

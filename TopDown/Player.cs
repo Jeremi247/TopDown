@@ -18,6 +18,7 @@ namespace TopDown
             this.baseSpeed = baseSpeed;
 
             moveTarget = position;
+            SetPositionToCenter();
         }
 
         public void Shoot()

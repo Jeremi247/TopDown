@@ -43,8 +43,8 @@ namespace TopDown.Buttons
             MonsterSpawner.Clear();
             AbilitiesController.Clear();
             ScoreController.Clear();
-            GameState.IsInProgress = true;
-            GameState.SetGameState(GameState.States.Gameplay);
+            GameStateController.IsInProgress = true;
+            GameStateController.SetGameState(GameStateController.States.Gameplay);
         }
     }
 }

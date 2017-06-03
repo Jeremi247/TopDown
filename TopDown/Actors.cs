@@ -21,7 +21,6 @@ namespace TopDown
         public static void Init()
         {
             Character = new Player(GameProperties.DefaultTexture, Vector2.Zero, new Vector2(15,15), Color.Red, 400);
-            Character.SetPositionToCenter();
 
             Drawable.Add(Character);
         }

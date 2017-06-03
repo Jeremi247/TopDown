@@ -14,14 +14,14 @@ namespace TopDown
         {
             if (!Program.game.IsActive)
             {
-                GameState.SetGameState(GameState.States.Menu);
+                GameStateController.SetGameState(GameStateController.States.Menu);
             }
 
             InputController.ManageInputs(gameTime);
 
-            if (GameState.GetGameState() == GameState.States.Gameplay)
+            if (GameStateController.GetGameState() == GameStateController.States.Gameplay)
             {
-                GameState.IsInProgress = true;
+                GameStateController.IsInProgress = true;
                 DeleteRedundant();
 
                 MoveEntities(gameTime);
@@ -30,7 +30,7 @@ namespace TopDown
                 AbilitiesController.Run(gameTime);
                 CheckCollisions();
             }
-            else if(GameState.GetGameState() == GameState.States.Menu)
+            else if(GameStateController.GetGameState() == GameStateController.States.Menu)
             {
                 MenuController.CheckStates();
             }
@@ -110,8 +110,8 @@ namespace TopDown
                 }
                 if (enemy.collisionBox.Intersects(Actors.Character.collisionBox))
                 {
-                    GameState.SetGameState(GameState.States.Menu);
-                    GameState.IsInProgress = false;
+                    GameStateController.SetGameState(GameStateController.States.Menu);
+                    GameStateController.IsInProgress = false;
                 }
             }
         }

@@ -16,14 +16,18 @@ namespace TopDown
 
             DrawActors(Actors.DeadBodies.ToList<Actor>(), spriteBatch);
             DrawActors(Actors.BloodParticles.ToList<Actor>(), spriteBatch);
-            DrawActors(Actors.Drawable.ToList<Actor>(), spriteBatch);
             DrawActors(Actors.Abilities.ToList<Actor>(), spriteBatch);
             DrawActors(Actors.Bullets.ToList<Actor>(), spriteBatch);
+            DrawActors(Actors.Drawable.ToList<Actor>(), spriteBatch);
             DrawActors(Actors.Enemies.ToList<Actor>(), spriteBatch);
 
-            if (GameState.GetGameState() == GameState.States.Menu)
+            if (GameStateController.GetGameState() == GameStateController.States.Menu)
             {
                 MenuController.DrawMenu(spriteBatch);
+            }
+            if(GameStateController.GetGameState() == GameStateController.States.Pause)
+            {
+                MenuController.DrawPause(spriteBatch);
             }
 
             DrawGUI(spriteBatch);
