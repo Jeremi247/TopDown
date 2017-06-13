@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TopDown
 {
-    class Ability : Actor
+    abstract class Ability : Actor
     {
         static Vector2 defaultPosition = Vector2.Zero;
         static Vector2 defaultScale = new Vector2(18, 18);
@@ -28,10 +28,7 @@ namespace TopDown
             position.Y = enemy.position.Y + (enemy.scale.Y * enemy.texture.Height) / 2 - (defaultScale.Y * texture.Height) / 2;
         }
 
-        public virtual void ApplyAbility()
-        {
-
-        }
+        public abstract void ApplyAbility();
 
         public void Pulse(GameTime gameTime)
         {

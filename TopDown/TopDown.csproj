@@ -47,6 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AbilitiesController.cs" />
+    <Compile Include="Abilities\BlastPulse.cs" />
     <Compile Include="Abilities\Minigun.cs" />
     <Compile Include="Ability.cs" />
     <Compile Include="Actor.cs" />
