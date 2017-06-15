@@ -9,6 +9,7 @@ namespace TopDown.Abilities
 {
     class BlastPulse : Ability
     {
+        public static float Value = 4000;
         private static Color defaultColor = Color.DodgerBlue;
         public BlastPulse(BasicEnemy enemy) : base (enemy, defaultColor)
         {

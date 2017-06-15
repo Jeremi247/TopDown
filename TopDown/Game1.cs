@@ -21,9 +21,13 @@ namespace TopDown
         {
             base.Initialize();
             this.IsMouseVisible = true;
+            Window.Title = "v0.1";
 
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
+
+            TargetElapsedTime = TimeSpan.FromSeconds(1.0 / 144.0f);
+            graphics.SynchronizeWithVerticalRetrace = false;
 
             IntPtr ptr = this.Window.Handle;
 
@@ -39,6 +43,7 @@ namespace TopDown
             GameProperties.BigDefaultFont = Content.Load<SpriteFont>("BigPixelFont");
 
             AbilitiesController.Init();
+            AbilitiesRandomizer.Init();
             MenuController.Init();
             Actors.Init();
         }
@@ -63,8 +68,6 @@ namespace TopDown
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-
-            Window.Title = "v0.1";
 
             DrawController.Draw(spriteBatch);
 

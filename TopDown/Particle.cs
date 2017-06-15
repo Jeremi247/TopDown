@@ -62,7 +62,7 @@ namespace TopDown
             position.X += velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds;
             position.Y += velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            AdjustSpeed();
+            AdjustSpeed(gameTime);
         }
 
         private void AdjustTarget()
@@ -78,10 +78,10 @@ namespace TopDown
             velocity.Y += (float)variety;
         }
 
-        public void AdjustSpeed()
+        public void AdjustSpeed(GameTime gameTime)
         {
-            velocity.X -= velocity.X/5;
-            velocity.Y -= velocity.Y/5;
+            velocity.X -= velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds * 15;
+            velocity.Y -= velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds * 15;
         }
 
         private void AdjustColor()

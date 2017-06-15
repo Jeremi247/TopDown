@@ -114,15 +114,7 @@ namespace TopDown
 
         public void SpawnAbility()
         {
-            var random = rnd.Next(0, 100);
-            if(random >= 0 && random <= 6)
-            {
-                Actors.Abilities.Add(new Abilities.Minigun(this));
-            }
-            else if (random > 6 && random <= 9)
-            {
-                Actors.Abilities.Add(new Abilities.BlastPulse(this));
-            }
+            AbilitiesRandomizer.SpawnAbility(this);
         }
     }
 }

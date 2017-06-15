@@ -9,6 +9,7 @@ namespace TopDown.Abilities
 {
     class Minigun : Ability
     {
+        public static float Value = 2000;
         private static Color defaultColor = Color.AliceBlue;
         public Minigun(BasicEnemy enemy) : base (enemy, defaultColor)
         {
