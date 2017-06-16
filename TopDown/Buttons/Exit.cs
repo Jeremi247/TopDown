@@ -22,6 +22,7 @@ namespace TopDown.Buttons
 
         private void ExitGame()
         {
+			Coin.save();
             Program.game.Exit();
         }
     }

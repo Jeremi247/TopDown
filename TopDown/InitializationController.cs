@@ -39,6 +39,7 @@ namespace TopDown
             AbilitiesRandomizer.Init();
             MenuController.Init();
             Actors.Init();
+			Coin.load();
         }
     }
 }

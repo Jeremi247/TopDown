@@ -4,7 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Projects/Visual Studio/TopDown/TopDown/TopDown/Content/PixelFont.spritefont</File>
-    <File>C:/Projects/Visual Studio/TopDown/TopDown/TopDown/Content/BigPixelFont.spritefont</File>
+    <File>C:/Users/HurricanKai/Desktop/TopDown/TopDown/Content/PixelFont.spritefont</File>
+    <File>C:/Users/HurricanKai/Desktop/TopDown/TopDown/Content/BigPixelFont.spritefont</File>
   </SourceFiles>
 </SourceFileCollection>
