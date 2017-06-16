@@ -55,6 +55,7 @@
     <Compile Include="Actors.cs" />
     <Compile Include="BasicEnemy.cs" />
     <Compile Include="Coin.cs" />
+    <Compile Include="Cryption.cs" />
     <Compile Include="InitializationController.cs" />
     <Compile Include="Particle.cs" />
     <Compile Include="Bullet.cs" />

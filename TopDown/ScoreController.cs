@@ -35,7 +35,7 @@ namespace TopDown
         {
             spriteBatch.DrawString(font, GetText(), scorePosition, color);
             spriteBatch.DrawString(font, ("Combo! Score x"+scoreMultiplayer.ToString("N")), comboPosition, color);
-			spriteBatch.DrawString(font, ("Coins: " + Coin.getAmount()), comboPosition, color);
+			spriteBatch.DrawString(font, ("Coins: " + Coin.getAmount()), coinPostion, color);
 		}
 
         public static String GetText()

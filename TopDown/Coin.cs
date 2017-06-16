@@ -7,6 +7,7 @@ namespace TopDown
 {
 	public class Coin
 	{
+		private static string pass = "Coin";
 		private static Random random = new Random();
 		public static string RandomString(int length)
 		{
@@ -37,11 +38,11 @@ namespace TopDown
 			Random rnd = new Random();
 			var v = File.Create(path);
 			v.Close();
-			string[] lines = new string[21];
+			string[] lines = new string[101];
 			int x = 0;
 			foreach (string l in lines)
 			{
-				if (x != 20)
+				if (x != 100)
 				{
 					Random rg = new Random();
 					int randomvalue = rg.Next(1, 10);
@@ -51,7 +52,13 @@ namespace TopDown
 			}
 			for (int i = 0; i < count; i++)
 			{
-				lines[20] = lines[20] + "x";
+				lines[100] = lines[100] + "x";
+			}
+			int g = 0;
+			foreach (string f in lines)
+			{
+				lines[g] = Crypter.Encrypt(lines[g], pass);
+				g++;
 			}
 			File.WriteAllLines(path, lines);
 		}
@@ -61,7 +68,14 @@ namespace TopDown
 			{
 				if (File.Exists(path))
 				{
-					string[] x = File.ReadAllLines(path);
+					string[] h = File.ReadAllLines(path);
+					string[] x = new string[h.Length];
+					int i = 0;
+					foreach (string b in h)
+					{
+						x[i] = Crypter.Decrypt(h[i], pass);
+						i++;
+					}
 					if (x[x.Length - 1].StartsWith("x") && x[x.Length - 1].EndsWith("x"))
 					{
 						count = x[x.Length - 1].Length;
