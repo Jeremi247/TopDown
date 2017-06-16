@@ -9,7 +9,6 @@ namespace TopDown
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D whitePixel;
 
         public Game1()
         {
@@ -20,32 +19,7 @@ namespace TopDown
         protected override void Initialize()
         {
             base.Initialize();
-            this.IsMouseVisible = true;
-            Window.Title = "v0.1";
-
-            graphics.PreferredBackBufferWidth = 1280;
-            graphics.PreferredBackBufferHeight = 720;
-
-            TargetElapsedTime = TimeSpan.FromSeconds(1.0 / 144.0f);
-            graphics.SynchronizeWithVerticalRetrace = false;
-
-            IntPtr ptr = this.Window.Handle;
-
-            graphics.ApplyChanges();
-
-            whitePixel = new Texture2D(GraphicsDevice, 1, 1);
-            Color[] colorData = { Color.White };
-            whitePixel.SetData<Color>(colorData);
-
-            GameProperties.Viewport = GraphicsDevice.Viewport.Bounds;
-            GameProperties.DefaultTexture = whitePixel;
-            GameProperties.DefaultFont = Content.Load<SpriteFont>("PixelFont");
-            GameProperties.BigDefaultFont = Content.Load<SpriteFont>("BigPixelFont");
-
-            AbilitiesController.Init();
-            AbilitiesRandomizer.Init();
-            MenuController.Init();
-            Actors.Init();
+            InitializationController.Init(this, graphics);
         }
         
         protected override void LoadContent()

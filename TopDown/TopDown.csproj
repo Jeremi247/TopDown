@@ -54,6 +54,7 @@
     <Compile Include="Actor.cs" />
     <Compile Include="Actors.cs" />
     <Compile Include="BasicEnemy.cs" />
+    <Compile Include="InitializationController.cs" />
     <Compile Include="Particle.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="Button.cs" />
