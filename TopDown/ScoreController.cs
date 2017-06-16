@@ -14,7 +14,8 @@ namespace TopDown
         public static Color color = Color.Aqua;
         public static Vector2 scorePosition = new Vector2(10, 5);
         private static Vector2 comboPosition = new Vector2(scorePosition.X, scorePosition.Y + font.MeasureString("T").Y + 3);
-        public static float scoreMultiplayer = 1;
+		private static Vector2 coinPostion = new Vector2(scorePosition.X, scorePosition.Y + font.MeasureString("T").Y + 25);
+		public static float scoreMultiplayer = 1;
         public static ulong score = 0;
 
         public static void Clear()
@@ -34,7 +35,8 @@ namespace TopDown
         {
             spriteBatch.DrawString(font, GetText(), scorePosition, color);
             spriteBatch.DrawString(font, ("Combo! Score x"+scoreMultiplayer.ToString("N")), comboPosition, color);
-        }
+			spriteBatch.DrawString(font, ("Coins: " + Coin.getAmount()), comboPosition, color);
+		}
 
         public static String GetText()
         {

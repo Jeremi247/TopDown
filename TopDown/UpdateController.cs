@@ -104,6 +104,7 @@ namespace TopDown
                     if(bullet.collisionBox.Intersects(enemy.collisionBox))
                     {
                         enemy.SpawnBlood(bullet);
+						Coin.Add(1);
                         bullet.Remove();
                         enemy.Remove();
                     }
