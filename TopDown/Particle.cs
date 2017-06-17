@@ -29,6 +29,7 @@ namespace TopDown
             AdjustTarget();
         }
 
+        //Changes colors' values, if object is not visible it is set as removable
         public void Fade(GameTime gameTime)
         {
             var amount = (255/ fadingTime) *gameTime.ElapsedGameTime.TotalSeconds;
@@ -57,6 +58,7 @@ namespace TopDown
             }
         }
 
+        //moves the bullet by a proper amount got from the adjustment of the bullet speed
         public void Move(GameTime gameTime)
         {
             position.X += velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -65,6 +67,7 @@ namespace TopDown
             AdjustSpeed(gameTime);
         }
 
+        //Varies velocity for splatter effect
         private void AdjustTarget()
         {
             var maxSpeed = Math.Sqrt(Math.Pow(velocity.X, 2) + Math.Pow(velocity.Y, 2));
@@ -78,12 +81,14 @@ namespace TopDown
             velocity.Y += (float)variety;
         }
 
+        //Slows down the particle
         public void AdjustSpeed(GameTime gameTime)
         {
             velocity.X -= velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds * 15;
             velocity.Y -= velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds * 15;
         }
 
+        //Sets the base color of the particle with some variation
         private void AdjustColor()
         {
             var divider = 0.5;

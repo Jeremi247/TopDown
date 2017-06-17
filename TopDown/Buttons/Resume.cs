@@ -15,7 +15,8 @@ namespace TopDown.Buttons
             
         }
 
-        public override void CheckState()
+        //Checks if the game is in progress and if this button can be activated
+        public override void SetsActiveStatus()
         {
             if (!GameStateController.IsInProgress)
             {
@@ -27,6 +28,7 @@ namespace TopDown.Buttons
             }
         }
 
+        //Takes action. Is called after the button is clicked
         public override void TakeAction()
         {
             if (isActive)
@@ -35,6 +37,7 @@ namespace TopDown.Buttons
             }
         }
 
+        //Sets game state to Gameplay
         private void ResumeGame()
         {
             GameStateController.SetGameState(GameStateController.States.Gameplay);

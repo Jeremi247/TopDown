@@ -21,6 +21,7 @@ namespace TopDown
             SetPositionToCenter();
         }
 
+        //Shoots the given weapon in the direction of the cursor
         public void Shoot()
         {
             Texture2D bulletTexture = GameProperties.DefaultTexture;
@@ -55,6 +56,7 @@ namespace TopDown
             }
         }
 
+        //Smoke effect near player object when shooting
         private void SpawnSmoke(Bullet bullet, Color color, double time, int amount)
         {
             for (int i = 0; i < amount; i++)
@@ -63,6 +65,7 @@ namespace TopDown
             }
         }
 
+        //returns true if player can shoot with use of the pistol
         private Boolean CanPistolShoot()
         {
             return AbilitiesController.CurrentWeapon == AbilitiesController.WeaponTypes.pistol &&
@@ -70,6 +73,7 @@ namespace TopDown
                    (InputController.IsLeftMouseButtonHeld && timeToNextShot <= 0));
         }
 
+        //Updates timer delaying the shots
         public void UpdateWeaponTimer(GameTime gameTime)
         {
             if (timeToNextShot > 0)
@@ -78,42 +82,49 @@ namespace TopDown
             }
         }
 
+        //Sets target movemwnt direction to the left of the player's position
         public void MoveLeft()
         {
             CorrectSpeed();
             moveTarget.X = position.X - speed;
         }
 
+        //Sets target movemwnt direction to the left of the player's position
         public void MoveRight()
         {
             CorrectSpeed();
             moveTarget.X = position.X + speed;
         }
 
+        //Sets target movemwnt direction to the left of the player's position
         public void MoveUp()
         {
             CorrectSpeed();
             moveTarget.Y = position.Y - speed;
         }
 
+        //Sets target movemwnt direction to the left of the player's position
         public void MoveDown()
         {
             CorrectSpeed();
             moveTarget.Y = position.Y + speed;
         }
 
+        //Moves the player to the vector position set by Move<Direction> functions
         public void Move(GameTime gameTime)
         {
             MoveInDirection(gameTime, moveTarget);
             moveTarget = position;
         }
 
+        //Places player at the center of the viewport
         public void SetPositionToCenter()
         {
             position.X = GameProperties.Viewport.Width / 2 - this.scale.X * texture.Width / 2;
             position.Y = GameProperties.Viewport.Height / 2 - this.scale.Y * texture.Height / 2;
         }
 
+        //Keeps the player in the viewport
         public void KeepInViewport()
         {
             if (position.X < GameProperties.Viewport.Left)

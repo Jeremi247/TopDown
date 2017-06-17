@@ -45,7 +45,7 @@ namespace TopDown
                 {
                     button.isHovered = false;
                 }
-                button.CheckState();
+                button.SetsActiveStatus();
             }
         }
 

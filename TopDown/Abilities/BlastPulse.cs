@@ -11,11 +11,13 @@ namespace TopDown.Abilities
     {
         public static float Value = 4000;
         private static Color defaultColor = Color.DodgerBlue;
+
         public BlastPulse(BasicEnemy enemy) : base (enemy, defaultColor)
         {
 
         }
 
+        //Applies pulse ability, splits amount of bullets in different directions with even spaces between
         public override void ApplyAbility()
         {
             float speed = 1000;

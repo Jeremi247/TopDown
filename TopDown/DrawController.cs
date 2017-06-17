@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace TopDown
 {
     class DrawController
-    {
+    {   //All draw calls are performed in this controller
         public static void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
@@ -21,11 +21,13 @@ namespace TopDown
             DrawActors(Actors.Drawable.ToList<Actor>(), spriteBatch);
             DrawActors(Actors.Enemies.ToList<Actor>(), spriteBatch);
 
+            //Draws when game is in the Menu state 
             if (GameStateController.GetGameState() == GameStateController.States.Menu)
             {
                 MenuController.DrawMenu(spriteBatch);
             }
-            if(GameStateController.GetGameState() == GameStateController.States.Pause)
+            //Draws when game is in the Pause state 
+            if (GameStateController.GetGameState() == GameStateController.States.Pause)
             {
                 MenuController.DrawPause(spriteBatch);
             }
@@ -35,6 +37,7 @@ namespace TopDown
             spriteBatch.End();
         }
 
+        //Draws all actors placed in the Actor list
         private static void DrawActors(List<Actor> list, SpriteBatch spriteBatch)
         {
             foreach (Actor actor in list)
@@ -43,6 +46,7 @@ namespace TopDown
             }
         }
 
+        //Draws GUI on top of every other object
         private static void DrawGUI(SpriteBatch spriteBatch)
         {
             ScoreController.DrawScore(spriteBatch);

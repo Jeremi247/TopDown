@@ -19,6 +19,7 @@ namespace TopDown
         protected override void Initialize()
         {
             base.Initialize();
+            //Initializates game content
             InitializationController.Init(this, graphics);
         }
         
@@ -34,6 +35,7 @@ namespace TopDown
 
         protected override void Update(GameTime gameTime)
         {
+            //All update calls are made in UpdateController
             UpdateController.Update(gameTime);
 
             base.Update(gameTime);
@@ -43,6 +45,7 @@ namespace TopDown
         {
             GraphicsDevice.Clear(Color.Black);
 
+            //All draw calls are made in UpdateController
             DrawController.Draw(spriteBatch);
 
             base.Draw(gameTime);

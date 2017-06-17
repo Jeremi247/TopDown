@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace TopDown
-{
+{   //Base class for almost every other visibly existing object in the game
     class Actor
     {
         protected Random rnd = GameProperties.Random;
@@ -32,27 +32,32 @@ namespace TopDown
             SetCollisionBox();
         }
 
+        //Marks object as removable. Child classes have often more criteria when to mark them.
         public void Remove()
         {
             ShouldBeRemoved = true;
         }
 
+        //Allows to check if object can be removed.
         public Boolean CanBeRemoved()
         {
             return ShouldBeRemoved;
         }
 
+        //Creates collision box after size, scale and texture are loaded;
         protected void SetCollisionBox()
         {
             UpdateCollisionPosition();
             UpdateCollisionSize();
         }
 
+        //Updates collision position. Needs to be called every time there is movement of the actor
         protected void UpdateCollisionPosition()
         {
             collisionBox.Location = position.ToPoint();
         }
 
+        //Updates collision size. Needs to be called every time there is change in size, scale or texture of the actor
         protected void UpdateCollisionSize()
         {
             collisionBox.Width = (int)(texture.Width * scale.X);

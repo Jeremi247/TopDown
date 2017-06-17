@@ -16,17 +16,20 @@ namespace TopDown.Buttons
 
         }
 
+        //Starts new game
         public override void TakeAction()
         {
             StartNewGame();
         }
 
+        //Calls clearing functions
         private void StartNewGame()
         {
             ClearActors();
             ClearData();
         }
 
+        //Clear Actors container and initializates it again
         private void ClearActors()
         {
             Actors.Abilities.Clear();
@@ -38,6 +41,7 @@ namespace TopDown.Buttons
             Actors.Init();
         }
 
+        //Clears statuses and variables of various classes
         private void ClearData()
         {
             MonsterSpawner.Clear();

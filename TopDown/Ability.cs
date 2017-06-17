@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TopDown
-{
+{   //Base class for all abilities
     abstract class Ability : Actor
     {
         static Vector2 defaultPosition = Vector2.Zero;
@@ -22,14 +22,17 @@ namespace TopDown
             SetPosition(enemy);
         }
 
+        //Sets position to the place where enemy, from which it dropped, died
         private void SetPosition(BasicEnemy enemy)
         {
             position.X = enemy.position.X + (enemy.scale.X * enemy.texture.Width) / 2 - (defaultScale.X * texture.Width) / 2;
             position.Y = enemy.position.Y + (enemy.scale.Y * enemy.texture.Height) / 2 - (defaultScale.Y * texture.Height) / 2;
         }
 
+        //All child abilities must have this function saying what should happen after collecting them
         public abstract void ApplyAbility();
 
+        //Creates pulsating effect on the ability laying on the ground. Called by UpdateController
         public void Pulse(GameTime gameTime)
         {
             if (shouldGrow)

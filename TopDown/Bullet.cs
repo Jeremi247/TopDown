@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TopDown
-{
+{   //With use of this class it is possible to create bullets of various sizes, velocitys and looks
     class Bullet : Entity
     {
         public static Vector2 Scale = new Vector2(5, 5);
@@ -16,6 +16,7 @@ namespace TopDown
 
         public Bullet(Texture2D texture, Vector2 position, Vector2 scale, Color color, Vector2 targetPosition, float speed) : base(texture, position, scale, color)
         {
+            //if scale is set to zero then default value is applied
             if (scale == Vector2.Zero)
             {
                 this.scale = Scale;
@@ -28,16 +29,19 @@ namespace TopDown
             UpdateCollisionSize();
         }
 
+        //returns actual velocity of the bullet after GetVelocity function sets it
         public Vector2 GetSpeed()
         {
             return velocity;
         }
 
+        //return position which was the first destination of the bullet
         public Vector2 GetTargetPosition()
         {
             return targetPosition;
         }
 
+        //moves the bullet by a proper amount calculated in GetVelocity
         public void Move(GameTime gameTime)
         {
             position.X += velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -46,6 +50,7 @@ namespace TopDown
             UpdateCollisionPosition();
         }
 
+        //Calculates X and Y velocity based on location of the target position
         private Vector2 GetVelocity(Vector2 targetLocation)
         {
             Vector2 velocity = Vector2.Zero;
@@ -62,6 +67,7 @@ namespace TopDown
             return velocity;
         }
 
+        //returns true if bullet is outside of the viewport or is marked as removeable by ShouldBeRemoved variable. For more info go to Actor
         public new Boolean CanBeRemoved()
         {
             var viewport = GameProperties.Viewport;

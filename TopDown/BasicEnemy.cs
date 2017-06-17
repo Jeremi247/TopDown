@@ -19,11 +19,7 @@ namespace TopDown
 
             this.value = value;
 
-            if (position == Vector2.Zero)
-            {
-                SetRandomPosition();
-            }
-
+            SetRandomPosition();
             RandomizeVelocity();
             CalcValue();
             AdjustColor();
@@ -31,11 +27,13 @@ namespace TopDown
             UpdateCollisionSize();
         }
 
+        //Calculates the point value of this enemy based on it's speed and default speed
         private void CalcValue()
         {
             value = value * baseSpeed / defaultSpeed;
         }
 
+        //Adjusts color using speed as base. Slower enemies are darker
         private void AdjustColor()
         {
             int red = (int)(color.R * Math.Pow(baseSpeed / defaultSpeed, 2)) +50;
@@ -46,6 +44,7 @@ namespace TopDown
             color = newColor;
         }
 
+        //Randomize velocity using the base value for varied speed of the enemies
         private void RandomizeVelocity()
         {
             var percentChange = 0.8;
@@ -54,6 +53,7 @@ namespace TopDown
             baseSpeed += (float)multiplayer*baseSpeed;
         }
 
+        //Chooses on which side of the viewport enemy will spawn
         private void SetRandomPosition()
         {
             var viewport = GameProperties.Viewport;
@@ -69,30 +69,35 @@ namespace TopDown
             }
         }
 
+        //Sets random on the left of the viewport
         private void SetRandomLeft(Rectangle viewport)
         {
             position.X = viewport.X - texture.Width * scale.X;
             position.Y = rnd.Next(0, viewport.Height);
         }
 
+        //Sets random on the right of the viewport
         private void SetRandomRight(Rectangle viewport)
         {
             position.X = viewport.Width;
             position.Y = rnd.Next(0, viewport.Height);
         }
 
+        //Sets random position above the top of the viewport
         private void SetRandomTop(Rectangle viewport)
         {
             position.X = rnd.Next(0, viewport.Width);
             position.Y = viewport.Y - texture.Height * scale.Y;
         }
 
+        //Sets random position bellow the bottom of the viewport
         private void SetRandomBottom(Rectangle viewport)
         {
             position.X = rnd.Next(0, viewport.Width);
             position.Y = viewport.Height;
         }
 
+        //Spawns random amount of blood particles. For more info go to Particle
         public void SpawnBlood(Bullet bullet)
         {
             for (int i = 0; i < rnd.Next(5, 10); i++)
@@ -101,6 +106,7 @@ namespace TopDown
             }
         }
 
+        //Marks enemy as removable and calls "onDeath" functions
         public new void Remove()
         {
             ShouldBeRemoved = true;
@@ -112,6 +118,7 @@ namespace TopDown
             ScoreController.Add((int)value);
         }
 
+        //Calls ability randomzier. For more info go to AbilitiesRandomizer
         public void SpawnAbility()
         {
             AbilitiesRandomizer.SpawnAbility(this);

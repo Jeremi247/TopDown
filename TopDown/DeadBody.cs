@@ -10,6 +10,7 @@ namespace TopDown
     class DeadBody : Actor
     {
         Vector3 colorFade;
+        //Sets dead body properties based on the enemy from which it is spawned
         public DeadBody(Entity parent) : base(GameProperties.DefaultTexture, Vector2.Zero, Vector2.One, Color.White)
         {
             texture = parent.texture;
@@ -20,6 +21,7 @@ namespace TopDown
             AdjustColor();
         }
 
+        //Adjust color based on the time of existence of this object
         private void AdjustColor()
         {
             int red = (int)Math.Sqrt(color.R)*2;
@@ -31,30 +33,31 @@ namespace TopDown
             colorFade = color.ToVector3() * 255;
         }
 
+        //Changes colors' values, if object is not visible it is set as removable
         public void Fade(GameTime gameTime)
         {
-            var amount = (255 / 30) * gameTime.ElapsedGameTime.TotalSeconds;
+            var amountToRemove = (255 / 30) * gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (color.R <= amount && color.G <= amount && color.B <= amount)
+            if (color.R <= amountToRemove && color.G <= amountToRemove && color.B <= amountToRemove)
             {
                 ShouldBeRemoved = true;
             }
 
-            if (color.R > amount)
+            if (color.R > amountToRemove)
             {
-                colorFade.X -= (float)amount;
+                colorFade.X -= (float)amountToRemove;
                 color.R = (byte)colorFade.X;
             }
 
-            if (color.G > amount)
+            if (color.G > amountToRemove)
             {
-                colorFade.Y -= (float)amount;
+                colorFade.Y -= (float)amountToRemove;
                 color.G = (byte)colorFade.Y;
             }
 
-            if (color.B > amount)
+            if (color.B > amountToRemove)
             {
-                colorFade.Z -= (float)amount;
+                colorFade.Z -= (float)amountToRemove;
                 color.B = (byte)colorFade.Z;
             }
         }

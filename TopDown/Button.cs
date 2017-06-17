@@ -7,8 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TopDown
-{
-    class Button
+{   //Base class for all buttons used in menu
+    abstract class Button
     {
         protected Boolean isActive = true;
         public Boolean isHovered = false;
@@ -17,6 +17,7 @@ namespace TopDown
         public String text;
         private Vector2 textPosition;
 
+        //Constructor sets size of the button, it's triger box, and position of the text written on it
         public Button(Vector2 position, String text)
         {
             size.X = GameProperties.Viewport.Width - position.X;
@@ -27,6 +28,7 @@ namespace TopDown
             textPosition.Y = boundary.Y + boundary.Height/2 - (float)Math.Floor(GameProperties.DefaultFont.MeasureString(text).Y/2);
         }
 
+        //Draws the button in proper style dependent of state of the button.
         public void Draw(SpriteBatch spriteBatch)
         {
             if (isHovered && isActive)
@@ -46,14 +48,13 @@ namespace TopDown
             }
         }
 
-        public virtual void CheckState()
+        //Checks if button can be set to active, is not required for button to work. All child classes are handling it by themself. Buttons are active by default
+        public virtual void SetsActiveStatus()
         {
 
         }
 
-        public virtual void TakeAction()
-        {
-
-        }
+        //Function that must be called by all child classes for button to take action
+        public abstract void TakeAction();
     }
 }

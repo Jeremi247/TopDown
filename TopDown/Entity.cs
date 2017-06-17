@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TopDown
-{
+{   //Base class for every moving entity
     class Entity : Actor
     {
         protected float speed;
@@ -18,6 +18,7 @@ namespace TopDown
         {
         }
 
+        //Moves in the given direction. Speed is caluclated on base of 
         public void MoveInDirection(GameTime gameTime, Vector2 targetLocation)
         {
             CorrectSpeed();
@@ -36,6 +37,7 @@ namespace TopDown
             UpdateCollisionPosition();
         }
 
+        //if delta is negative it is changed to positive number and multiplatyer for it's plane is set to negative
         protected int GetMultiplayer(ref float delta)
         {
             int multiplayer = 1;
@@ -48,6 +50,7 @@ namespace TopDown
             return multiplayer;
         }
 
+        //returns difference between this location and target location
         protected Vector2 GetPositionDelta(Vector2 targetLocation)
         {
             Vector2 deltaLocation;
@@ -58,6 +61,7 @@ namespace TopDown
             return deltaLocation;
         }
 
+        //Gets vector magnitude in X and Y plane and returns them. X and Y are calculated on base of Pythagoras triangle. Z^2 = X^2 + Y^2
         protected Vector2 GetVectorLength(Vector2 deltaPosition)
         {
             Vector2 returnVector = Vector2.Zero;
@@ -77,6 +81,7 @@ namespace TopDown
             return returnVector;
         }
 
+        //Correctes vector direction
         protected void CorrectSpeed()
         {
             speed = baseSpeed * speedMultiplayer;

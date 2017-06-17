@@ -16,6 +16,7 @@ namespace TopDown.Abilities
 
         }
 
+        //Applies ability, add 4 seconds of duration for minigun weapon
         public override void ApplyAbility()
         {
             AbilitiesController.AddTime(4000, AbilitiesController.WeaponTypes.minigun);

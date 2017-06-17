@@ -15,11 +15,13 @@ namespace TopDown.Buttons
 
         }
 
+        //Callse ExitGame
         public override void TakeAction()
         {
             ExitGame();
         }
 
+        //Closes the game
         private void ExitGame()
         {
             Program.game.Exit();

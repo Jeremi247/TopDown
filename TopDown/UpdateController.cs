@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace TopDown
 {
     class UpdateController
-    {
+    {   //Update controller. All update calls are made here
         public static void Update(GameTime gameTime)
         {
             if (!Program.game.IsActive)
@@ -19,6 +19,7 @@ namespace TopDown
 
             InputController.ManageInputs(gameTime);
 
+            //Updates when game is in the Gameplay state 
             if (GameStateController.GetGameState() == GameStateController.States.Gameplay)
             {
                 GameStateController.IsInProgress = true;
@@ -30,12 +31,14 @@ namespace TopDown
                 AbilitiesController.Run(gameTime);
                 CheckCollisions();
             }
-            else if(GameStateController.GetGameState() == GameStateController.States.Menu)
+            //Updates when game is in the Menu state 
+            else if (GameStateController.GetGameState() == GameStateController.States.Menu)
             {
                 MenuController.CheckStates();
             }
         }
 
+        //Garbage collector. Clears all objects marked as removable
         private static void DeleteRedundant()
         {
             Actors.Bullets.RemoveAll(bullet => bullet.CanBeRemoved());
@@ -45,6 +48,7 @@ namespace TopDown
             Actors.Abilities.RemoveAll(ability => ability.CanBeRemoved());
         }
 
+        //Moves all able to move entities
         private static void MoveEntities(GameTime gameTime)
         {
             Actors.Character.Move(gameTime);
@@ -77,12 +81,14 @@ namespace TopDown
             }
         }
 
+        //Calls collision functions
         private static void CheckCollisions()
         {
             CheckEnemiesCollisions();
             CheckAbilities();
         }
 
+        //Checks collisions of abilities with the player
         private static void CheckAbilities()
         {
             foreach(var ability in Actors.Abilities)
@@ -95,6 +101,7 @@ namespace TopDown
             }
         }
 
+        //Check collision of all enemies with everything that they can collide with
         private static void CheckEnemiesCollisions()
         {
             foreach(var enemy in Actors.Enemies)

@@ -11,7 +11,9 @@ namespace TopDown
         private static List<float> values = new List<float>();
         private static Random rnd = GameProperties.Random;
         private static float totalValue;
+        private static float totalDropChance = 800;
 
+        //Initializates randomizer. Sums all abilities' values.
         public static void Init()
         {
             values.Add(Abilities.Minigun.Value);
@@ -19,10 +21,11 @@ namespace TopDown
             totalValue = values.Sum();
         }
 
+        //Spawns ability on random basis. Ability drop chance is caluclated on base of total drop chance and it's value, percentage is multiplayed by 100
         public static void SpawnAbility(BasicEnemy enemy)
         {
-            var val1 = Abilities.Minigun.Value / totalValue * 700;
-            var val2 = Abilities.BlastPulse.Value / totalValue * 700;
+            var val1 = totalDropChance - Abilities.Minigun.Value / totalValue * totalDropChance;
+            var val2 = totalDropChance - Abilities.BlastPulse.Value / totalValue * totalDropChance;
             var random = rnd.Next(0, 10000);
 
             if (random >= 0 && random < val1)
