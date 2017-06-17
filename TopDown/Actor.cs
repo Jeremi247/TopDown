@@ -12,27 +12,29 @@ namespace TopDown
     {
         protected Random rnd = GameProperties.Random;
         public Vector2 position;
-        public Vector2 scale;
+		public static Vector2 nposition;
+		public Vector2 scale;
         public Vector2 size;
-        public Rectangle collisionBox;
+		public Rectangle collisionBox;
         public Texture2D texture;
         public Color color;
         protected Boolean ShouldBeRemoved = false;
 
-        public Actor(Texture2D texture, Vector2 position, Vector2 scale, Color color)
+        public Actor(Texture2D _texture, Vector2 _position, Vector2 _scale, Color _color)
         {
-            this.texture = texture;
-            this.position = position;
-            this.scale = scale;
-            this.color = color;
+            texture = _texture;
+            position = _position;
+            scale = _scale;
+            color = _color;
+			nposition = position;
 
-            this.size.X = texture.Width * scale.X;
-            this.size.Y = texture.Height * scale.Y;
+            size.X = texture.Width * scale.X;
+            size.Y = texture.Height * scale.Y;
 
             SetCollisionBox();
         }
 
-        public void Remove()
+		public void Remove()
         {
             ShouldBeRemoved = true;
         }
@@ -44,19 +46,19 @@ namespace TopDown
 
         protected void SetCollisionBox()
         {
-            UpdateCollisionPosition();
+            UpdateCollision();
             UpdateCollisionSize();
-        }
+		}
 
-        protected void UpdateCollisionPosition()
+        protected void UpdateCollision()
         {
             collisionBox.Location = position.ToPoint();
-        }
+		}
 
         protected void UpdateCollisionSize()
         {
             collisionBox.Width = (int)(texture.Width * scale.X);
             collisionBox.Height = (int)(texture.Height * scale.Y);
-        }
+		}
     }
 }

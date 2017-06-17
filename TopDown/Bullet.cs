@@ -18,7 +18,7 @@ namespace TopDown
         {
             if (scale == Vector2.Zero)
             {
-                this.scale = Scale;
+                scale = Scale;
             }
 
             this.speed = speed;
@@ -43,7 +43,7 @@ namespace TopDown
             position.X += velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds;
             position.Y += velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            UpdateCollisionPosition();
+            UpdateCollision();
         }
 
         private Vector2 GetVelocity(Vector2 targetLocation)

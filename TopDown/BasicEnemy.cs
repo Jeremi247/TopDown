@@ -114,7 +114,7 @@ namespace TopDown
 
         public void SpawnAbility()
         {
-            AbilitiesRandomizer.SpawnAbility(this);
+            AbilitiesRandomizer.SpawnAbilityEasy(this);
         }
     }
 }

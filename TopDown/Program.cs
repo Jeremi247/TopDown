@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SharpRaven;
+using SharpRaven.Data;
+using System;
 
 namespace TopDown
 {
@@ -9,8 +11,16 @@ namespace TopDown
         [STAThread]
         static void Main()
         {
-            using (game)
-                game.Run();
-        }
+			try
+			{
+				using (game)
+					game.Run();
+			}
+			catch (Exception e)
+			{
+				var ravenClient = new RavenClient("https://12ee265ead35440c8adc29e804382f4e:0471e3c336734908b09aa99a4d474a22@sentry.io/180679");
+				ravenClient.Capture(new SentryEvent(e));
+			}
+		}
     }
 }

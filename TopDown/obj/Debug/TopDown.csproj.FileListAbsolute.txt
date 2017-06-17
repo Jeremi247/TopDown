@@ -34,3 +34,27 @@ C:\Projects\Visual Studio\TopDown\TopDown\TopDown\obj\Debug\TopDown.exe
 C:\Projects\Visual Studio\TopDown\TopDown\TopDown\obj\Debug\TopDown.pdb
 C:\Projects\Visual Studio\TopDown\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\Content\PixelFont.xnb
 C:\Projects\Visual Studio\TopDown\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\Content\BigPixelFont.xnb
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\x86\SDL2.dll
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\x64\SDL2.dll
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\x86\soft_oal.dll
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\x64\soft_oal.dll
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\x86\libSDL2-2.0.so.0
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\x64\libSDL2-2.0.so.0
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\x86\libopenal.so.1
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\x64\libopenal.so.1
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\libSDL2-2.0.0.dylib
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\libopenal.1.dylib
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll.config
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\Content\BigPixelFont.xnb
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\Content\PixelFont.xnb
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\TopDown.exe
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\TopDown.pdb
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\obj\Debug\TopDown.csprojResolveAssemblyReference.cache
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\obj\Debug\TopDown.exe
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\obj\Debug\TopDown.pdb
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\Newtonsoft.Json.dll
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\SharpRaven.dll
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\Newtonsoft.Json.xml
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\SharpRaven.pdb
+C:\Users\HurricanKai\Desktop\TopDown\TopDown\bin\DesktopGL\AnyCPU\Debug\SharpRaven.xml

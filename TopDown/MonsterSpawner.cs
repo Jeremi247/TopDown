@@ -12,7 +12,7 @@ namespace TopDown
         private static float elapsedTime = 0;
         private static float basicMonsterRespawnTime = 1000;
 
-        public static void SpawnMonsters(GameTime gameTime)
+		public static void SpawnMonsters(GameTime gameTime)
         {
             if (Actors.Enemies.Count > 7)
             {
@@ -31,7 +31,7 @@ namespace TopDown
                 }
             }
 
-            elapsedTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+			elapsedTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
         }
 
         private static void SpawnBasicMonster()
@@ -39,13 +39,13 @@ namespace TopDown
             Actors.Enemies.Add(new BasicEnemy(GameProperties.DefaultTexture, Vector2.Zero, Actors.Character.scale, Color.Green, 200, 10));
         }
 
-        public static void LowerRespawnTime(int loweringLimit)
-        {
-            if(basicMonsterRespawnTime > loweringLimit)
-            {
-                basicMonsterRespawnTime -= 100;
-            }
-        }
+		public static void LowerRespawnTime(int loweringLimit)
+		{
+			if (basicMonsterRespawnTime > loweringLimit)
+			{
+				basicMonsterRespawnTime -= 100;
+			}
+		}
 
         public static void Clear()
         {

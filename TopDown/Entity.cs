@@ -33,7 +33,7 @@ namespace TopDown
             this.position.X += lengthVector.X * xMultiplayer * deltaTime;
             this.position.Y += lengthVector.Y * yMultiplayer * deltaTime;
 
-            UpdateCollisionPosition();
+            UpdateCollision();
         }
 
         protected int GetMultiplayer(ref float delta)

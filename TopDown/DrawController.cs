@@ -12,8 +12,6 @@ namespace TopDown
     {
         public static void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
-
             DrawActors(Actors.DeadBodies.ToList<Actor>(), spriteBatch);
             DrawActors(Actors.BloodParticles.ToList<Actor>(), spriteBatch);
             DrawActors(Actors.Abilities.ToList<Actor>(), spriteBatch);
@@ -30,17 +28,17 @@ namespace TopDown
                 MenuController.DrawPause(spriteBatch);
             }
 
-            DrawGUI(spriteBatch);
-
-            spriteBatch.End();
+			DrawGUI(spriteBatch);
         }
 
         private static void DrawActors(List<Actor> list, SpriteBatch spriteBatch)
         {
+			//TODO: Dont need this?
             foreach (Actor actor in list)
             {
                 spriteBatch.Draw(actor.texture, actor.position, color: actor.color, scale: actor.scale);
             }
+			
         }
 
         private static void DrawGUI(SpriteBatch spriteBatch)

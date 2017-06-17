@@ -19,20 +19,28 @@ namespace TopDown
             totalValue = values.Sum();
         }
 
-        public static void SpawnAbility(BasicEnemy enemy)
+        public static void SpawnAbilityEasy(BasicEnemy enemy)
         {
             var val1 = Abilities.Minigun.Value / totalValue * 700;
             var val2 = Abilities.BlastPulse.Value / totalValue * 700;
             var random = rnd.Next(0, 10000);
 
-            if (random >= 0 && random < val1)
-            {
-                Actors.Abilities.Add(new Abilities.Minigun(enemy));
-            }
-            else if (random >= val1 && random < val2)
-            {
-                Actors.Abilities.Add(new Abilities.BlastPulse(enemy));
-            }
+			if (random >= 0 && random < val1)
+			{
+				//TODO: MAKE WEAPON[] WHICH CONTAINS ALL OF THE WEAPONS! (AND APPLY IT!)
+				if (BoughtController.getStateBool(Abilities.Minigun.name) == true)
+				{
+					WeaponRegister.executeAbility(0);
+				}
+			}
+			else if (random >= val1 && random < val2)
+			{
+				if (BoughtController.getStateBool(Abilities.BlastPulse.name) == true)
+				{
+					//if some is in the top left, spawns 1000000 particles!
+					WeaponRegister.executeAbility(1);
+				}
+			}
         }
-    }
+	}
 }

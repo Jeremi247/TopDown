@@ -34,7 +34,8 @@ namespace TopDown
             GameProperties.DefaultTexture = whitePixel;
             GameProperties.DefaultFont = game.Content.Load<SpriteFont>("PixelFont");
             GameProperties.BigDefaultFont = game.Content.Load<SpriteFont>("BigPixelFont");
-
+			BoughtController.load();
+			WeaponRegister.init();
             AbilitiesController.Init();
             AbilitiesRandomizer.Init();
             MenuController.Init();

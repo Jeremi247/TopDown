@@ -54,6 +54,10 @@
     <Compile Include="Actor.cs" />
     <Compile Include="Actors.cs" />
     <Compile Include="BasicEnemy.cs" />
+    <Compile Include="BoughtController.cs" />
+    <Compile Include="Buttons\Previous.cs" />
+    <Compile Include="Buttons\Next.cs" />
+    <Compile Include="Buttons\buy.cs" />
     <Compile Include="Coin.cs" />
     <Compile Include="Cryption.cs" />
     <Compile Include="InitializationController.cs" />
@@ -77,10 +81,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScoreController.cs" />
     <Compile Include="UpdateController.cs" />
+    <Compile Include="WeaponRegister.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpRaven, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpRaven.2.2.0\lib\net45\SharpRaven.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -136,6 +148,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="app.manifest" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon2.ico" />

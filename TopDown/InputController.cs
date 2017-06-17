@@ -13,10 +13,15 @@ namespace TopDown
         public static Boolean IsLeftMouseButtonHeld = false;
         private static Boolean IsEscButtonHeld = false;
         private static Boolean IsSpaceButtonHeld = false;
+		public static Boolean IsLeftMouseButtonPressed = false;
         private static int framesPassed = 0;
+		private static MouseState lastMouseState;
+		private static MouseState currentMouseState;
 
-        public static void Clear()
+
+		public static void Clear()
         {
+			IsLeftMouseButtonPressed = false;
             IsLeftMouseButtonHeld = false;
             IsEscButtonHeld = false;
             framesPassed = 0;
@@ -88,8 +93,20 @@ namespace TopDown
             {
                 Actors.Character.speedMultiplayer = 1f;
             }
-
-            if (keyboard.IsKeyDown(Keys.Escape) && !IsEscButtonHeld)
+			if (keyboard.IsKeyDown(Keys.C) && keyboard.IsKeyDown(Keys.L))
+			{
+				Coin.Add(10);
+			}
+			if (keyboard.IsKeyDown(Keys.G))
+			{
+				//Abilities.Minigun.ApplyAbility();
+				WeaponRegister.executeAbility(Abilities.Minigun.id);
+			}
+			if (keyboard.IsKeyDown(Keys.F))
+			{
+				Abilities.BlastPulse.ApplyAbility();
+			}
+            if (keyboard.IsKeyDown(Keys.Escape) && !IsEscButtonHeld && Program.game.IsActive)
             {
                 IsEscButtonHeld = true;
                 if(GameStateController.IsInProgress && GameStateController.GetGameState() == GameStateController.States.Menu)
@@ -110,27 +127,44 @@ namespace TopDown
 
         private static void MouseController(MouseState mouse)
         {
-            if (mouse.LeftButton == ButtonState.Pressed)
-            {
-                if (framesPassed > 0)
-                {
-                    IsLeftMouseButtonHeld = true;
-                }
-                else
-                {
-                    framesPassed += 1;
-                }
+			// The active state from the last frame is now old
+			lastMouseState = currentMouseState;
 
-                if (GameStateController.GetGameState() == GameStateController.States.Gameplay)
-                {
-                    Actors.Character.Shoot();
-                }
-            }
-            else
-            {
-                framesPassed = 0;
-                IsLeftMouseButtonHeld = false;
-            }
+			// Get the mouse state relevant for this frame
+			currentMouseState = Mouse.GetState();
+
+			// Recognize a single click of the left mouse button
+			if (lastMouseState.LeftButton == ButtonState.Released && currentMouseState.LeftButton == ButtonState.Pressed)
+			{
+				// React to the click
+				IsLeftMouseButtonPressed = true;
+			}
+			else
+			{
+				IsLeftMouseButtonPressed = false;
+			}
+			if (mouse.LeftButton == ButtonState.Pressed)
+			{
+				if (framesPassed > 0)
+				{
+					IsLeftMouseButtonHeld = true;
+				}
+				else
+				{
+					framesPassed += 1;
+				}
+
+				if (GameStateController.GetGameState() == GameStateController.States.Gameplay)
+				{
+					Actors.Character.Shoot();
+				}
+			}
+			else
+			{
+				framesPassed = 0;
+				IsLeftMouseButtonHeld = false;
+				IsLeftMouseButtonPressed = false;
+			}
         }
 
         public static Vector2 GetMousePosition()

@@ -65,7 +65,7 @@ namespace TopDown
             }
 
             UpdateCollisionSize();
-            UpdateCollisionPosition();
+            UpdateCollision();
         }
     }
 }

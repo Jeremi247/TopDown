@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace TopDown.Abilities
 {
-    class Minigun : Ability
-    {
-        public static float Value = 2000;
-        private static Color defaultColor = Color.AliceBlue;
-        public Minigun(BasicEnemy enemy) : base (enemy, defaultColor)
-        {
+	class Minigun
+	{
+		public static string name = "minigun"; // used in Weapon Register
+		public static bool Bought = false; //Default for Bought Register
+		public static float Value = 2000;
+		private static Color defaultColor = Color.AliceBlue;
+		public static int id = 1;
+		public static Weapon MG = new Weapon(name, Value, Weapon.RegisterWeaponAbility(id), defaultColor, Bought);
 
-        }
-
-        public override void ApplyAbility()
-        {
-            AbilitiesController.AddTime(4000, AbilitiesController.WeaponTypes.minigun);
-        }
-    }
+		public static void ApplyAbility()
+		{
+			AbilitiesController.AddTime(4000, AbilitiesController.WeaponTypes.minigun);
+		}
+	}
 }

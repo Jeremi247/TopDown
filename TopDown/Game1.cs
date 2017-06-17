@@ -41,10 +41,11 @@ namespace TopDown
 
         protected override void Draw(GameTime gameTime)
         {
+			spriteBatch.Begin();
             GraphicsDevice.Clear(Color.Black);
 
             DrawController.Draw(spriteBatch);
-
+			spriteBatch.End();
             base.Draw(gameTime);
         }
     }
