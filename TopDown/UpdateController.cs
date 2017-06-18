@@ -108,7 +108,7 @@ namespace TopDown
             {
                 foreach(var bullet in Actors.Bullets)
                 {
-                    if(bullet.collisionBox.Intersects(enemy.collisionBox))
+                    if(bullet.collisionBox.Intersects(enemy.collisionBox) && !enemy.CanBeRemoved())
                     {
                         enemy.SpawnBlood(bullet);
                         bullet.Remove();
