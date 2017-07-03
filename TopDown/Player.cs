@@ -24,8 +24,9 @@ namespace TopDown
         //Shoots the given weapon in the direction of the cursor
         public void Shoot()
         {
+            Weapon weapon = WeaponController.CurrentWeapon;
             Texture2D bulletTexture = GameProperties.DefaultTexture;
-            Vector2 bulletSize = Bullet.Scale;
+            Vector2 bulletSize = weapon.BulletSize;
             Vector2 spawnPosition;
             Vector2 bulletTarget;
 
@@ -35,24 +36,17 @@ namespace TopDown
             spawnPosition.X = position.X + (texture.Width * scale.X) / 2 - (bulletTexture.Width * bulletSize.X) / 2;
             spawnPosition.Y = position.Y + (texture.Height * scale.Y) / 2 - (bulletTexture.Height * bulletSize.Y) / 2;
 
-            if (CanPistolShoot())
+            if (timeToNextShot <= 0)
             {
-                Bullet bullet = new Bullet(bulletTexture, spawnPosition, bulletSize, Color.Yellow, bulletTarget, 700);
+                for (int i = 0; i < weapon.BulletsInOneShot; i++)
+                {
+                    Bullet bullet = new Bullet(bulletTexture, spawnPosition, bulletSize, weapon.BulletColor, bulletTarget, weapon.BulletSpeed);
 
-                SpawnSmoke(bullet, Color.DimGray, 0.3, 7);
-                SpawnSmoke(bullet, Color.Orange, 0.01, 7);
-                Actors.Bullets.Add(bullet);
-                timeToNextShot = 200;
-            }
-            else if (AbilitiesController.CurrentWeapon == AbilitiesController.WeaponTypes.minigun && timeToNextShot <= 0)
-            {
-                var minigunBulletSize = bulletSize * new Vector2(0.8f, 0.8f);
-                Bullet bullet = new Bullet(bulletTexture, spawnPosition, minigunBulletSize, Color.PaleGoldenrod, bulletTarget, 1000);
-
-                SpawnSmoke(bullet, Color.Gray, 0.1, 10);
-                SpawnSmoke(bullet, Color.Orange, 0.01, 7);
-                Actors.Bullets.Add(bullet);
-                timeToNextShot = 30;
+                    SpawnSmoke(bullet, Color.Gray, weapon.FireRate / 1000, 7);
+                    SpawnSmoke(bullet, Color.Orange, 0.01, 7);
+                    Actors.Bullets.Add(bullet);
+                }
+                timeToNextShot = weapon.FireRate;
             }
         }
 
@@ -63,14 +57,6 @@ namespace TopDown
             {
                 Actors.BloodParticles.Add(new Particle(GameProperties.DefaultTexture, new Vector2(5, 5), color, bullet, time));
             }
-        }
-
-        //returns true if player can shoot with use of the pistol
-        private Boolean CanPistolShoot()
-        {
-            return AbilitiesController.CurrentWeapon == AbilitiesController.WeaponTypes.pistol &&
-                   (!InputController.IsLeftMouseButtonHeld ||
-                   (InputController.IsLeftMouseButtonHeld && timeToNextShot <= 0));
         }
 
         //Updates timer delaying the shots

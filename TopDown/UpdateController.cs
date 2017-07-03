@@ -28,7 +28,7 @@ namespace TopDown
                 MoveEntities(gameTime);
                 MonsterSpawner.SpawnMonsters(gameTime);
 
-                AbilitiesController.Run(gameTime);
+                WeaponController.Run(gameTime);
                 CheckCollisions();
             }
             //Updates when game is in the Menu state 

@@ -46,11 +46,16 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AbilitiesController.cs" />
+    <Compile Include="WeaponController.cs" />
     <Compile Include="AbilitiesRandomizer.cs" />
+    <Compile Include="Abilities\AbilityContainer.cs" />
+    <Compile Include="Abilities\Ability.cs" />
     <Compile Include="Abilities\BlastPulse.cs" />
-    <Compile Include="Abilities\Minigun.cs" />
-    <Compile Include="Ability.cs" />
+    <Compile Include="Abilities\Modification.cs" />
+    <Compile Include="Abilities\Weapon.cs" />
+    <Compile Include="Abilities\WeaponContainer.cs" />
+    <Compile Include="Abilities\WeaponTypes.cs" />
+    <Compile Include="ModificationContainer.cs" />
     <Compile Include="Actor.cs" />
     <Compile Include="Actors.cs" />
     <Compile Include="BasicEnemy.cs" />

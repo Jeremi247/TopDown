@@ -50,7 +50,7 @@ namespace TopDown
         private static void DrawGUI(SpriteBatch spriteBatch)
         {
             ScoreController.DrawScore(spriteBatch);
-            AbilitiesController.DrawTimer(spriteBatch);
+            WeaponController.DrawTimer(spriteBatch);
         }
     }
 }

@@ -61,7 +61,7 @@ namespace TopDown
         //Calls all of the starting inits
         private static void CallInits()
         {
-            AbilitiesController.Init();
+            WeaponController.Init();
             AbilitiesRandomizer.Init();
             MenuController.Init();
             Actors.Init();

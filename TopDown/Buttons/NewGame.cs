@@ -45,7 +45,7 @@ namespace TopDown.Buttons
         private void ClearData()
         {
             MonsterSpawner.Clear();
-            AbilitiesController.Clear();
+            WeaponController.Clear();
             ScoreController.Clear();
             GameStateController.IsInProgress = true;
             GameStateController.SetGameState(GameStateController.States.Gameplay);

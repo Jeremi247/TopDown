@@ -7,19 +7,21 @@ using System.Threading.Tasks;
 
 namespace TopDown
 {   //Base class for all abilities
-    abstract class Ability : Actor
+    abstract class ModificationContainer : Actor
     {
         static Vector2 defaultPosition = Vector2.Zero;
         static Vector2 defaultScale = new Vector2(18, 18);
         private Vector2 maxScale = new Vector2(21, 21);
         private Vector2 minScale = new Vector2(17, 17);
+        public Modification mod;
 
         private float pulseSpeed = 20;
         private Boolean shouldGrow = true;
 
-        public Ability(BasicEnemy enemy, Color color) : base (GameProperties.DefaultTexture, defaultPosition, defaultScale, color)
+        public ModificationContainer(BasicEnemy enemy, Color color, Modification _mod) : base (GameProperties.DefaultTexture, defaultPosition, defaultScale, color)
         {
             SetPosition(enemy);
+            mod = _mod;
         }
 
         //Sets position to the place where enemy, from which it dropped, died
@@ -29,7 +31,6 @@ namespace TopDown
             position.Y = enemy.position.Y + (enemy.scale.Y * enemy.texture.Height) / 2 - (defaultScale.Y * texture.Height) / 2;
         }
 
-        //All child abilities must have this function saying what should happen after collecting them
         public abstract void ApplyAbility();
 
         //Creates pulsating effect on the ability laying on the ground. Called by UpdateController

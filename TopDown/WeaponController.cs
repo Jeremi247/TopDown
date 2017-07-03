@@ -8,15 +8,14 @@ using System.Threading.Tasks;
 
 namespace TopDown
 {
-    class AbilitiesController
+    class WeaponController
     {
         //Enum contains all possible weapon types
-        public enum WeaponTypes { pistol, minigun };
-        public static WeaponTypes CurrentWeapon = WeaponTypes.pistol;
         private static SpriteFont font = GameProperties.DefaultFont;
+        public static Weapon CurrentWeapon = WeaponTypes.pistol;
 
         private static float maxVisibleAbilityTime = 12000;
-        public static float AbilityTime = 0;
+        public static float WeaponTime = 0;
 
         private static Rectangle barSize;
         private static Color barColor;
@@ -37,7 +36,7 @@ namespace TopDown
         private static void SetWeaponNamePos()
         {
             weaponNamePosition.X = GameProperties.Viewport.Width -
-                                   font.MeasureString(CurrentWeapon.ToString()).X - 
+                                   font.MeasureString(CurrentWeapon.WeaponName).X - 
                                    ScoreController.scorePosition.X;
 
             weaponNamePosition.Y = ScoreController.scorePosition.Y;
@@ -48,10 +47,10 @@ namespace TopDown
         {
             spriteBatch.Draw(GameProperties.DefaultTexture, barSize, barColor);
 
-            spriteBatch.DrawString(font, CurrentWeapon.ToString(), weaponNamePosition, Color.Aqua);
-            if (AbilityTime > 0)
+            spriteBatch.DrawString(font, CurrentWeapon.WeaponName, weaponNamePosition, Color.Aqua);
+            if (WeaponTime > 0)
             {
-                spriteBatch.DrawString(font, (AbilityTime / 1000).ToString("N"), barTimerPos, Color.Aqua);
+                spriteBatch.DrawString(font, (WeaponTime / 1000).ToString("N"), barTimerPos, Color.Aqua);
             }
         }
 
@@ -60,13 +59,13 @@ namespace TopDown
         {
             Actors.Character.UpdateWeaponTimer(gameTime);
 
-            if (AbilityTime > 0)
+            if (WeaponTime > 0)
             {
-                AbilityTime -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                WeaponTime -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             }
             else
             {
-                AbilityTime = 0;
+                WeaponTime = 0;
                 CurrentWeapon = WeaponTypes.pistol;
             }
 
@@ -77,38 +76,39 @@ namespace TopDown
         //Adjust bar that indicates how long the ability will last and adjust's bar timer's position
         private static void AdjustBar()
         {
-            if (AbilityTime >= maxVisibleAbilityTime)
+            if (WeaponTime >= maxVisibleAbilityTime)
             {
                 //If ability time is too long bar will have constant length
                 barSize.Width = (int)(GameProperties.Viewport.Width / 1.5);
             }
             else
             {
-                barSize.Width = (int)((AbilityTime / maxVisibleAbilityTime) * (GameProperties.Viewport.Width / 1.5));
+                barSize.Width = (int)((WeaponTime / maxVisibleAbilityTime) * (GameProperties.Viewport.Width / 1.5));
             }
 
-            barTimerPos.X = GameProperties.Viewport.Width / 2 - font.MeasureString((AbilityTime / 1000).ToString("N")).X / 2;
+            barTimerPos.X = GameProperties.Viewport.Width / 2 - font.MeasureString((WeaponTime / 1000).ToString("N")).X / 2;
             barSize.X = GameProperties.Viewport.Width / 2 - barSize.Width / 2;
         }
 
         //resets current weapon to basic
         public static void Clear()
         {
-            AbilityTime = 0;
+            WeaponTime = 0;
             CurrentWeapon = WeaponTypes.pistol;
         }
 
         //Adds ability time if same weapon as the current one was collected 
-        public static void AddTime(float miliseconds, WeaponTypes weapon)
+        public static void AddTime(Weapon weapon)
         {
-            if(CurrentWeapon == weapon)
+            if(CurrentWeapon.WeaponName == weapon.WeaponName)
             {
-                AbilityTime += miliseconds;
+                WeaponTime += weapon.WeaponTime;
             }
             else
             {
                 CurrentWeapon = weapon;
-                AbilityTime = miliseconds;
+                WeaponTime = weapon.WeaponTime;
+                Actors.Character.timeToNextShot = 0;
             }
         }
     }
