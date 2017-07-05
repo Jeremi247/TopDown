@@ -12,7 +12,7 @@ namespace TopDown
     {
         //Enum contains all possible weapon types
         private static SpriteFont font = GameProperties.DefaultFont;
-        public static Weapon CurrentWeapon = WeaponTypes.pistol;
+        public static Weapon CurrentWeapon = WeaponTypes.Pistol;
 
         private static float maxVisibleAbilityTime = 12000;
         public static float WeaponTime = 0;
@@ -66,7 +66,7 @@ namespace TopDown
             else
             {
                 WeaponTime = 0;
-                CurrentWeapon = WeaponTypes.pistol;
+                CurrentWeapon = WeaponTypes.Pistol;
             }
 
             SetWeaponNamePos();
@@ -94,7 +94,7 @@ namespace TopDown
         public static void Clear()
         {
             WeaponTime = 0;
-            CurrentWeapon = WeaponTypes.pistol;
+            CurrentWeapon = WeaponTypes.Pistol;
         }
 
         //Adds ability time if same weapon as the current one was collected 

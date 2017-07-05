@@ -29,14 +29,15 @@ namespace TopDown
             float iteratedValue = 0;
             foreach (Modification mod in mods)
             {
-                var value = totalDropChance - mod.Value / totalValue * totalDropChance;//TO DO: REPAIR THIES SHIET
-                if(random >= iteratedValue && random < value)
+                var value = mod.Value / totalValue * totalDropChance;
+                if(random >= iteratedValue && random < iteratedValue + value)
                 {
+                    Console.WriteLine(mod.GetType() + " " + typeof(Ability) + " " + (mod.GetType() == typeof(Ability)));
                     if (mod.GetType() == typeof(Weapon))
                     {
                         Actors.Abilities.Add(new WeaponContainer(enemy, mod.ModColor, (Weapon)mod));
                     }
-                    else if (mod.GetType() == typeof(Ability))
+                    else
                     {
                         Actors.Abilities.Add(new AbilityContainer(enemy, mod.ModColor, (Ability)mod));
                     }
@@ -47,9 +48,10 @@ namespace TopDown
 
         private static void FillMods()
         {
-            mods.Add(new Weapon(new Vector2(2, 2), 100, Color.Green, 0, 1, 100, 10000, 400, "one"));
-            mods.Add(new Weapon(new Vector2(5, 5), 400, Color.Yellow, 1, 4, 500, 7000, 600, "two"));
-            mods.Add(new Weapon(new Vector2(10, 10), 2000, Color.Blue, 2, 2, 2000, 13000, 1000, "three"));
+            mods.Add(WeaponTypes.TestWeaponOne);
+            mods.Add(WeaponTypes.TestWeaponTwo);
+            mods.Add(WeaponTypes.TestWeaponThree);
+
             mods.Add(new Abilities.BlastPulse(1500, Color.AliceBlue));
         }
 
