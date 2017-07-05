@@ -17,7 +17,10 @@ namespace TopDown.Abilities
         //Applies pulse ability, splits amount of bullets in different directions with even spaces between
         public override void Apply()
         {
-            Vector2 position = Actors.Character.position; //to do: set to center
+            Vector2 position;
+            position.X = Actors.Character.position.X + Actors.Character.texture.Width * Actors.Character.scale.X / 2;
+            position.Y = Actors.Character.position.Y + Actors.Character.texture.Height * Actors.Character.scale.Y / 2;
+
             float speed = 1000;
             double bulletsAmount = 200;
             for (double i = 0; i < bulletsAmount; i++)

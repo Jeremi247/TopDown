@@ -29,10 +29,9 @@ namespace TopDown
             float iteratedValue = 0;
             foreach (Modification mod in mods)
             {
-                var value = mod.Value / totalValue * totalDropChance;
+                var value = mod.DropChance / totalValue * totalDropChance;
                 if(random >= iteratedValue && random < iteratedValue + value)
                 {
-                    Console.WriteLine(mod.GetType() + " " + typeof(Ability) + " " + (mod.GetType() == typeof(Ability)));
                     if (mod.GetType() == typeof(Weapon))
                     {
                         Actors.Abilities.Add(new WeaponContainer(enemy, mod.ModColor, (Weapon)mod));
@@ -61,7 +60,7 @@ namespace TopDown
 
             foreach (Modification mod in mods)
             {
-                returnValue += mod.Value;
+                returnValue += mod.DropChance;
             }
 
             return returnValue;

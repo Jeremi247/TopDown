@@ -9,11 +9,11 @@ namespace TopDown
 {
     class Modification
     {
-        public float Value;
+        public float DropChance;
         public Color ModColor;
-        public Modification(float _value, Color _modColor)
+        public Modification(float _dropChance, Color _modColor)
         {
-            Value = _value;
+            DropChance = _dropChance;
             ModColor = _modColor;
         }
     }
