@@ -13,8 +13,10 @@ namespace TopDown
         public static Vector2 Scale = new Vector2(5, 5);
         Vector2 targetPosition;
         Vector2 velocity;
+        double fadingTime = 30;
+        Vector3 colorFade;
 
-        public Bullet(Texture2D texture, Vector2 position, Vector2 scale, Color color, Vector2 targetPosition, float speed) : base(texture, position, scale, color)
+        public Bullet(Texture2D texture, Vector2 position, Vector2 scale, Color color, Vector2 targetPosition, float speed, float spread = 100, double _fadingTime = 1) : base(texture, position, scale, color)
         {
             //if scale is set to zero then default value is applied
             if (scale == Vector2.Zero)
@@ -22,10 +24,12 @@ namespace TopDown
                 this.scale = Scale;
             }
 
+            fadingTime = _fadingTime;
             this.speed = speed;
             this.targetPosition = targetPosition;
             this.velocity = GetVelocity(targetPosition);
 
+            AdjustTarget(spread);
             UpdateCollisionSize();
         }
 
@@ -65,6 +69,45 @@ namespace TopDown
             velocity.Y += lengthVector.Y * yMultiplayer;
 
             return velocity;
+        }
+
+        private void AdjustTarget(float spread)
+        {
+            var maxSpeed = Math.Sqrt(Math.Pow(velocity.X, 2) + Math.Pow(velocity.Y, 2));
+
+            var variety = rnd.Next(-(int)spread, (int)spread);
+            velocity.X += (float)variety;
+
+            variety = rnd.Next(-(int)spread, (int)spread);
+            velocity.Y += (float)variety;
+        }
+
+        public void Fade(GameTime gameTime)
+        {
+            var amount = (255 / fadingTime) * gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (color.R <= amount && color.G <= amount && color.B <= amount)
+            {
+                ShouldBeRemoved = true;
+            }
+
+            if (color.R > amount)
+            {
+                colorFade.X -= (float)amount;
+                color.R = (byte)colorFade.X;
+            }
+
+            if (color.G > amount)
+            {
+                colorFade.Y -= (float)amount;
+                color.G = (byte)colorFade.Y;
+            }
+
+            if (color.B > amount)
+            {
+                colorFade.Z -= (float)amount;
+                color.B = (byte)colorFade.Z;
+            }
         }
 
         //returns true if bullet is outside of the viewport or is marked as removeable by ShouldBeRemoved variable. For more info go to Actor

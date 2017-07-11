@@ -57,6 +57,7 @@ namespace TopDown
             foreach (var bullet in Actors.Bullets)
             {
                 bullet.Move(gameTime);
+                bullet.Fade(gameTime);
             }
 
             foreach (var enemy in Actors.Enemies)
